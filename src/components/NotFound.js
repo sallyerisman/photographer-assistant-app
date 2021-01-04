@@ -1,10 +1,6 @@
-import React from 'react'
-
 const NotFound = () => {
 	return (
-		<div>
-			<pre>404 Page Is Missing</pre>
-		</div>
+		<div>The page you requested could not be found</div>
 	)
 }
 

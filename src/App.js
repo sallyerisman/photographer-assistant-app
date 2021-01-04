@@ -5,10 +5,11 @@ import './assets/scss/app.scss'
 
 import AuthContextProvider from './contexts/AuthContext'
 
-import Album from './components/Album'
-import Albums from './components/Albums'
+import Album from './components/albums/Album'
+import Albums from './components/albums/Albums'
+import AuthRoute from './components/AuthRoute'
 import CreateAccount from './components/CreateAccount'
-import CreateAlbum from './components/CreateAlbum'
+import CreateAlbum from './components/albums/CreateAlbum'
 import ForgotPassword from './components/ForgotPassword'
 import Home from './components/Home'
 import Login from './components/Login'
@@ -30,7 +31,7 @@ const App = () => {
 								<Home />
 							</Route>
 
-							<Route path="/albums">
+							<AuthRoute path="/albums">
 								<Route path="/">
 									<Albums />
 								</Route>
@@ -42,9 +43,13 @@ const App = () => {
 								<Route path="/:albumId">
 									<Album />
 								</Route>
+							</AuthRoute>
+							
+							<Route path="/create-account">
+								<CreateAccount />
 							</Route>
 
-							<Route path="/forgot-password">
+							<Route path="/reset-password">
 								<ForgotPassword />
 							</Route>
 
@@ -54,10 +59,6 @@ const App = () => {
 
 							<Route path="/logout">
 								<Logout />
-							</Route>
-
-							<Route path="/create-account">
-								<CreateAccount />
 							</Route>
 
 							<Route path="*" element={<NotFound />} />
