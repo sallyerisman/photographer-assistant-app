@@ -37,7 +37,7 @@ const Login = () => {
 				<Form onSubmit={handleSubmit} className="form form__login">
 					<Form.Group id="email">
 						<Form.Label>Email</Form.Label>
-						<Form.Control type="email" ref={emailRef} required />
+						<Form.Control type="email" ref={emailRef} autoFocus required />
 					</Form.Group>
 
 					<Form.Group id="password">

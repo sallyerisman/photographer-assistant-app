@@ -37,7 +37,7 @@ const ForgotPassword = () => {
 				<Form onSubmit={handleSubmit} className="form form__reset-password">
 					<Form.Group id="email">
 						<Form.Label>Email</Form.Label>
-						<Form.Control type="email" ref={emailRef} required />
+						<Form.Control type="email" ref={emailRef} autoFocus required />
 					</Form.Group>
 
 					<Button disabled={loading} type="submit">Reset your password</Button>
