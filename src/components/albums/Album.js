@@ -1,30 +1,28 @@
-import { Link } from 'react-router-dom'
-import { Col, Row } from 'react-bootstrap'
-import { useAuth } from '../../contexts/AuthContext'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import useAlbum from '../../hooks/useAlbum'
-import EditAlbum from './EditAlbum'
-import NotFound from '../NotFound'
+import ImageGrid from './ImageGrid'
+import UploadImage from './UploadImage'
 
 const Album = () => {
-	const { currentUser } = useAuth()
-	const { album, loading } = useAlbum()
+	const { albumId } = useParams()
+	const { album, loading } = useAlbum(albumId)
 
 	return (
 		<>
-			<Row>
-				<Col>
-				{!album.id 
-					? <NotFound />
-					: loading
-						? <div>Loading...</div>
-						: currentUser && <EditAlbum album={album}/>
-				}
-				</Col>	
-			</Row>
-			<Link to={'/albums/'}>Tillbaka till kategorier</Link>	
+			<h2>{album && album.title}</h2>
+
+			<UploadImage albumId={albumId} />
+
+			{loading
+				? <div>Loading...</div>
+				: album && 
+					<ImageGrid images={album.images} />
+			}
 		</>
 	)
 }
 
 export default Album
+
 

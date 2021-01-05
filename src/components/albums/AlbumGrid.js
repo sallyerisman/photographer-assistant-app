@@ -5,8 +5,8 @@ const AlbumGrid = ({ albums }) => {
 	return (
 		<> 
 			{albums.map(album => (
-				<Link to={`/albums/${album.id}`}>
-					<Card key={album.id}>
+				<Link to={`/albums/${album.id}`} key={album.id}>
+					<Card>
 						<Card.Body>
 							<Card.Title>{album.title}</Card.Title>
 						</Card.Body>
