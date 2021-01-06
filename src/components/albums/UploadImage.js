@@ -1,22 +1,25 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 import ProgressBar from 'react-bootstrap/esm/ProgressBar'
 import { useDropzone } from 'react-dropzone'
-import useUploadImage from '../../hooks/useUploadImage'
+import useUploadImages from '../../hooks/useUploadImages'
 
-const UploadImage = () => {
+const UploadImages = () => {
+	const { albumId } = useParams()
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [successMessage, setSuccessMessage] = useState(false)
-	const [uploadImage, setUploadImage] = useState(null)
-	const { error, isSuccess, uploadProgress } = useUploadImage(uploadImage)
+	const [uploadImages, setUploadImages] = useState(null)
+	const { error, isSuccess, uploadProgress } = useUploadImages(uploadImages, albumId)
 
 	useEffect(() => {
 		if (error) {
-			setErrorMessage("An error occurred and the image could not be uploaded.")
+			setErrorMessage("An error occurred and the upload could not be performed.")
 		} else if (isSuccess) {
-			setSuccessMessage("The image was successfully uploaded.")
+			setSuccessMessage("The upload was successful!")
+			
 			// Prevent duplicate upload
-			setUploadImage(null);
+			setUploadImages(null);
 		} 
 	}, [error, isSuccess]);
 
@@ -25,7 +28,7 @@ const UploadImage = () => {
 			return;
 		}
 
-		setUploadImage(acceptedFiles[0]);
+		setUploadImages(acceptedFiles);
 	}, []);
 
 	const { acceptedFiles, getInputProps, getRootProps, isDragAccept, isDragActive, isDragReject } = useDropzone({
@@ -74,4 +77,4 @@ const UploadImage = () => {
 	)
 }
 
-export default UploadImage
+export default UploadImages

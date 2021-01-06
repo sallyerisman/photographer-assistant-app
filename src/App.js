@@ -9,7 +9,7 @@ import Album from './components/albums/Album'
 import Albums from './components/albums/Albums'
 import AuthRoute from './components/AuthRoute'
 import CreateAccount from './components/CreateAccount'
-import CreateAlbum from './components/albums/CreateAlbum'
+import CreateAlbumByTitle from './components/albums/CreateAlbumByTitle'
 import ForgotPassword from './components/ForgotPassword'
 import Home from './components/Home'
 import Login from './components/Login'
@@ -37,7 +37,7 @@ const App = () => {
 								</Route>
 
 								<Route path="/create">
-									<CreateAlbum />
+									<CreateAlbumByTitle />
 								</Route>
 
 								<Route path="/:albumId">

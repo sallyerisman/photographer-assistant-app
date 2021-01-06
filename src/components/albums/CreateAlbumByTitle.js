@@ -4,7 +4,7 @@ import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { db } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext'
 
-const CreateAlbum = () => {
+const CreateAlbumByTitle = () => {
 	const { currentUser } = useAuth()
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -71,4 +71,4 @@ const CreateAlbum = () => {
 	)
 }
 
-export default CreateAlbum
+export default CreateAlbumByTitle
