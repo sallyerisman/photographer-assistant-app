@@ -71,9 +71,17 @@ const useUploadImages = (images, albumId = null) => {
 			(async () => {
 				const timestamp = new Date().toLocaleString();
 				const title = `New album ${timestamp}` 
+				const urlifiedTitle = title
+					.toLowerCase()
+					.replace(/\s+/g, '-')
+					.replace(/å/g, 'a')
+					.replace(/ä/g, 'a')
+					.replace(/ö/g, 'o');
+				const inviteLink = `${urlifiedTitle}-${Date.now()}`
 	
 				await db.collection('albums').add({
 					images: images,
+					inviteLink,
 					title,
 					owner: currentUser.uid,
 				})

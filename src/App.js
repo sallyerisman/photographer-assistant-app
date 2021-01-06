@@ -16,6 +16,7 @@ import Login from './components/Login'
 import Logout from './components/Logout'
 import Navigation from './components/Navigation'
 import NotFound from './components/NotFound'
+import ReviewAlbum from './components/albums/ReviewAlbum'
 
 const App = () => {
 	return (
@@ -29,6 +30,10 @@ const App = () => {
 
 							<Route path="/">
 								<Home />
+							</Route>
+
+							<Route path="/:inviteLink">
+								<ReviewAlbum />
 							</Route>
 
 							<AuthRoute path="/albums">

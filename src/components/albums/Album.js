@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom'
+import { Alert, Button } from 'react-bootstrap'
 import useAlbum from '../../hooks/useAlbum'
 import EditTitle from './EditTitle'
 import ImageGrid from './ImageGrid'
@@ -9,13 +10,20 @@ const Album = () => {
 	const { albumId } = useParams()
 	const { album, loading } = useAlbum(albumId)
 	const [editTitle, setEditTitle] = useState(false);
+	const [invite, setInvite] = useState(null);
 
 	const handleEditTitle = () => {
         setEditTitle(true);
+	};
+	
+	const handleInvite = (inviteLink) => {
+        setInvite(inviteLink);
     };
 	
 	return (
 		<>	
+			{invite && <Alert variant="warning">{invite}</Alert>}
+
 			{loading
 				? <div>Loading...</div>
 				: album && 
@@ -26,6 +34,7 @@ const Album = () => {
 								<h2>{album.title} <span onClick={handleEditTitle}>🖋</span></h2>
 								<UploadImage albumId={albumId} />
 								<ImageGrid images={album.images} />
+								<Button disabled={loading} onClick={() => handleInvite(album.inviteLink)}>Create invite link</Button>
 							</>
 						}
 					</>
