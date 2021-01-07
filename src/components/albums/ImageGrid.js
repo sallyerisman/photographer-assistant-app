@@ -4,8 +4,9 @@ import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useAuth } from '../../contexts/AuthContext'
 import useApproveImages from '../../hooks/useApproveImages'
+import useDeleteImage from '../../hooks/useDeleteImage'
 import useUploadImages from '../../hooks/useUploadImages'
- import Checkbox from '../../helpers/Checkbox'
+import Checkbox from '../../helpers/Checkbox'
 
 const ImageGrid = (album) => {
 	const { images, owner, title } = album
@@ -14,11 +15,13 @@ const ImageGrid = (album) => {
 	const { currentUser } = useAuth()
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [imagesForUpload, setImagesForUpload] = useState(null)
+	const [deleteImage, setDeleteImage] = useState(null)
 	const navigate = useNavigate()
 	const [selectedImages, setSelectedImages] = useState([])
+	const [successMessage, setSuccessMessage] = useState(false)
 	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
 	const { error, isSuccess } = useUploadImages(imagesForUpload)
-	
+	const { deleteError, deleteSuccess } = useDeleteImage(deleteImage);
 
 	useEffect(() => {
 		if (error) {
@@ -29,6 +32,15 @@ const ImageGrid = (album) => {
 			navigate('/albums')
 		} 
 	}, [error, isSuccess]);
+
+	
+	useEffect(() => {
+		if (deleteError) {
+			setErrorMessage("An error occurred and the album could not be created.")
+		} else if (deleteSuccess) {
+			setSuccessMessage("The image was successfully deleted.")
+		} 
+	}, [deleteError, deleteSuccess]);
 
 	useEffect(() => {
 		if (reviewError) {
@@ -70,9 +82,16 @@ const ImageGrid = (album) => {
 		currentUser ? setImagesForUpload(filteredImages) : setApprovedImages(filteredImages)
 	}
 
+	const handleDeleteImage = (image) => {
+		if (confirm(`Are you sure you want to delete image "${image.name}"?`)) {
+			setDeleteImage(image);
+		}
+	}
+
 	return (
 		<SRLWrapper>
 			{errorMessage && (<Alert variant="danger">{errorMessage}</Alert>)}
+			{successMessage && (<Alert variant="warning">{successMessage}</Alert>)}
 
 			<Row>
 				{images.map((image, index) => (
@@ -92,12 +111,13 @@ const ImageGrid = (album) => {
 								onChange={handleChange}
 							/>
 						</Card>
+						<Button onClick={() => {handleDeleteImage(image)}}>Delete</Button>
 					</Col>				
 				))}
 
 				{selectedImages && selectedImages.length > 0 &&		
 					<Button onClick={() => handleCreateNewAlbum(selectedImages)}>{currentUser ? "Create new album" : "Finalize your selection"}</Button>
-				}				
+				}		
 			</Row>
 		</SRLWrapper>
 	)
