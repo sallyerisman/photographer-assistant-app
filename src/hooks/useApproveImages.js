@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { db } from '../firebase'
+import moment from 'moment'
 
 const useApproveImages = (images, owner, title) => {
 	const [reviewError, setReviewError] = useState(false)
@@ -13,17 +14,18 @@ const useApproveImages = (images, owner, title) => {
 		}
 
 		(async () => {
-			const reviewTitle = `${title} - Reviewed - -${Date.now()}` 
+			const reviewTitle = `${title} - Reviewed ${moment().format('LLL')}` 
 			const urlifiedTitle = reviewTitle
 				.toLowerCase()
 				.replace(/\s+/g, '-')
 				.replace(/å/g, 'a')
 				.replace(/ä/g, 'a')
 				.replace(/ö/g, 'o');
+			const inviteLink = `${urlifiedTitle}-${Date.now()}`
 
 			await db.collection('albums').add({
 				images: images,
-				inviteLink: urlifiedTitle,
+				inviteLink,
 				title: reviewTitle,
 				owner,
 			})

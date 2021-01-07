@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
+import PuffLoader from 'react-spinners/PuffLoader'
 import { useAuth } from '../../contexts/AuthContext'
 import useAlbums from '../../hooks/useAlbums'
 import AlbumGrid from './AlbumGrid'
@@ -14,7 +15,7 @@ const Albums = () => {
 				<h2>My albums</h2>
 
 				{loading
-					? <div>Loading...</div>
+					? <PuffLoader className="loading-spinner"/>
 					: albums.length > 0
 						? <AlbumGrid albums={albums}/>
 						: <div>You currently do not have any albums.</div>

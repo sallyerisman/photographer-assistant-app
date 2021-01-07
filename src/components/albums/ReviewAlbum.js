@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import PuffLoader from 'react-spinners/PuffLoader'
 import useAlbum from '../../hooks/useAlbum'
 import useInvitedAlbum from '../../hooks/useInvitedAlbum'
 import ImageGrid from './ImageGrid'
@@ -11,7 +12,7 @@ const ReviewAlbum = () => {
 	return (
 		<>	
 			{loading || isLoading
-				? <div>Loading...</div>
+				? <PuffLoader className="loading-spinner"/>
 				: album && 
 					<>
 						<h2>{album.title}</h2>

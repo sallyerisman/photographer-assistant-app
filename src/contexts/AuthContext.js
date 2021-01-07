@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth } from '../firebase'
+import PuffLoader from 'react-spinners/PuffLoader'
 
 const AuthContext = createContext()
 
@@ -48,7 +49,7 @@ const AuthContextProvider = (props) => {
 
 	return (
 		<AuthContext.Provider value={contextValues}>
-			{loading && (<div>Loading...</div>)}
+			{loading && <PuffLoader className="loading-spinner"/>}
 			{!loading && props.children}
 		</AuthContext.Provider>
 	)

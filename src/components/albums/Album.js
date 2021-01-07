@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { Alert, Button } from 'react-bootstrap'
+import PuffLoader from 'react-spinners/PuffLoader'
 import useAlbum from '../../hooks/useAlbum'
 import EditTitle from './EditTitle'
 import ImageGrid from './ImageGrid'
@@ -25,7 +26,7 @@ const Album = () => {
 			{invite && <Alert variant="warning">{invite}</Alert>}
 
 			{loading
-				? <div>Loading...</div>
+				? <PuffLoader className="loading-spinner"/>
 				: album && 
 					<>
 						{editTitle 
