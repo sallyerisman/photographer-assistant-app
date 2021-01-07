@@ -2,15 +2,21 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
 import { SRLWrapper } from 'simple-react-lightbox'
+import { useAuth } from '../../contexts/AuthContext'
+import useApproveImages from '../../hooks/useApproveImages'
 import useUploadImages from '../../hooks/useUploadImages'
  import Checkbox from '../../helpers/Checkbox'
 
-const ImageGrid = ({ images }) => {
+const ImageGrid = (album) => {
+	const { images, owner, title } = album
+	const [approvedImages, setApprovedImages] = useState(null)
 	const [checkedItems, setCheckedItems] = useState({})
+	const { currentUser } = useAuth()
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [imagesForUpload, setImagesForUpload] = useState(null)
 	const navigate = useNavigate()
 	const [selectedImages, setSelectedImages] = useState([])
+	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
 	const { error, isSuccess } = useUploadImages(imagesForUpload)
 	
 
@@ -23,6 +29,16 @@ const ImageGrid = ({ images }) => {
 			navigate('/albums')
 		} 
 	}, [error, isSuccess]);
+
+	useEffect(() => {
+		if (reviewError) {
+			setErrorMessage("An error occurred and your selection could not be saved.")
+		} else if (reviewSuccess) {
+			// Prevent duplicate upload
+			setApprovedImages(null);
+			navigate('/thank-you')
+		} 
+	}, [reviewError, reviewSuccess]);
 
 	const handleChange = (e) => {
 		const imageUrl = e.target.name
@@ -51,7 +67,7 @@ const ImageGrid = ({ images }) => {
 			}
 		})
 
-		setImagesForUpload(filteredImages)
+		currentUser ? setImagesForUpload(filteredImages) : setApprovedImages(filteredImages)
 	}
 
 	return (
@@ -79,10 +95,9 @@ const ImageGrid = ({ images }) => {
 					</Col>				
 				))}
 
-				{selectedImages && selectedImages.length > 0 &&
-					<Button onClick={() => handleCreateNewAlbum(selectedImages)}>Create new album</Button>
-				}
-				
+				{selectedImages && selectedImages.length > 0 &&		
+					<Button onClick={() => handleCreateNewAlbum(selectedImages)}>{currentUser ? "Create new album" : "Finalize your selection"}</Button>
+				}				
 			</Row>
 		</SRLWrapper>
 	)

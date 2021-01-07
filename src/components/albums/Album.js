@@ -33,8 +33,12 @@ const Album = () => {
 							: <>
 								<h2>{album.title} <span onClick={handleEditTitle}>🖋</span></h2>
 								<UploadImage albumId={albumId} />
-								<ImageGrid images={album.images} />
-								<Button disabled={loading} onClick={() => handleInvite(album.inviteLink)}>Create invite link</Button>
+								<ImageGrid images={album.images}/>
+								<Button 
+									disabled={loading} 
+									onClick={() => handleInvite(album.inviteLink)}
+									>Create invite link
+								</Button>
 							</>
 						}
 					</>

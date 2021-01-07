@@ -17,6 +17,7 @@ import Logout from './components/Logout'
 import Navigation from './components/Navigation'
 import NotFound from './components/NotFound'
 import ReviewAlbum from './components/albums/ReviewAlbum'
+import ReviewConfirmation from './components/albums/ReviewConfirmation'
 
 const App = () => {
 	return (
@@ -64,6 +65,10 @@ const App = () => {
 
 							<Route path="/logout">
 								<Logout />
+							</Route>
+
+							<Route path="/thank-you">
+								<ReviewConfirmation />
 							</Route>
 
 							<Route path="*" element={<NotFound />} />
