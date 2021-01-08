@@ -16,7 +16,7 @@ const ReviewAlbum = () => {
 				: album && 
 					<>
 						<h2>{album.title}</h2>
-						<ImageGrid album={album} />
+						<ImageGrid images={album.images} owner={album.owner} title={album.title} />
 					</>
 			}
 		</>
