@@ -149,6 +149,12 @@ const ImageGrid = ({ images, owner, title }) => {
 			{successMessage && <Alert variant="warning">{successMessage}</Alert>}
 
 			<Row>
+				{images && likedImages && likedImages.length > 0 &&
+					<div>{`You have liked ${likedImages.length}/${images.length}`}</div>
+				}
+			</Row>
+
+			<Row>
 				{images &&
 				images.map((image, index) => (
 					<Col sm={6} md={4} lg={3} key={index}>
