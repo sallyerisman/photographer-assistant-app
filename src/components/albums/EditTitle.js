@@ -24,19 +24,11 @@ const EditTitle = ({ album }) => {
 		setLoading(true)
 
 		const capitalizedTitle = newTitle.charAt(0).toUpperCase() + newTitle.slice(1)
-		const urlifiedTitle = newTitle
-			.toLowerCase()
-			.replace(/\s+/g, '-')
-			.replace(/å/g, 'a')
-			.replace(/ä/g, 'a')
-			.replace(/ö/g, 'o');
-		const inviteLink = `${urlifiedTitle}-${Date.now()}`
 
 		try {
 			// Update album title in database
 			await db.collection('albums').doc(album.id).update({
 				title: capitalizedTitle,
-				inviteLink,
 			});
 
 			navigate(`/albums/${album.id}`)

@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react'
 import { db, storage } from '../firebase'
+import moment from 'moment'
 import { useAuth } from '../contexts/AuthContext'
 
 const useUploadImages = (images, albumId = null) => {
 	const { currentUser } = useAuth()
 	const [error, setError] = useState(false)
-	const [isSuccess, setIsSuccess] = useState(false)
+	const [success, setSuccess] = useState(false)
 	const [uploadProgress, setUploadProgress] = useState(null)
 
 	useEffect(() => {
 		if (images === null || images.length === 0) {
 			setError(null)
-			setIsSuccess(false)
+			setSuccess(false)
 			setUploadProgress(null)
 			return;
 		}
 
 		// Reset upload status
 		setError(null)
-		setIsSuccess(false)
+		setSuccess(false)
 
 		// Get specific album (if specified)
 		if (albumId) {
@@ -60,7 +61,7 @@ const useUploadImages = (images, albumId = null) => {
 					
 					// On success, set relevant statuses 
 					setError(false)
-					setIsSuccess(true);
+					setSuccess(true);
 					setUploadProgress(null);
 
 				}).catch(error => {
@@ -69,32 +70,23 @@ const useUploadImages = (images, albumId = null) => {
 			});	
 		} else {
 			(async () => {
-				const timestamp = new Date().toLocaleString();
-				const title = `New album ${timestamp}` 
-				const urlifiedTitle = title
-					.toLowerCase()
-					.replace(/\s+/g, '-')
-					.replace(/å/g, 'a')
-					.replace(/ä/g, 'a')
-					.replace(/ö/g, 'o');
-				const inviteLink = `${urlifiedTitle}-${Date.now()}`
+				const title = `New album ${moment().format('LLL')}` 
 	
 				await db.collection('albums').add({
 					images: images,
-					inviteLink,
 					title,
 					owner: currentUser.uid,
 				})
 							
 				// On success, set relevant statuses 
 				setError(false)
-				setIsSuccess(true);
+				setSuccess(true);
 				setUploadProgress(null);
 			})();
 		}
 	}, [currentUser, images]);
 
-	return { error, isSuccess, uploadProgress };
+	return { error, success, uploadProgress };
 }
 
 export default useUploadImages

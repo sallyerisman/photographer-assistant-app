@@ -25,6 +25,7 @@ const useDeleteImage = image => {
 				return;
 			}
 
+			// Remove image from image array in album
 			allImages.forEach((imgItem, index) => {
 				if (imgItem.url === image.url) {
 					allImages.splice(index, 1) 	
@@ -35,18 +36,12 @@ const useDeleteImage = image => {
 			await db.collection('albums').doc(albumId).update({
 				images: allImages,
 			});
-			setDeleteSuccess(true)
-		})();
-	}, [image]);
 
-	useEffect(() => {
-		if (!deleteSuccess) {
-			return;
-		}
-
-		(async () => {			
+			// Get all albums owned by current user	
 			let albumsRef = db.collection('albums').where('owner', '==', currentUser.uid)
 			let allAlbums = await albumsRef.get()
+			
+			// Check if the image also exist in other albums
 			let multipleExists = []
 			for(const doc of allAlbums.docs){
 				let imageArray = doc.data().images
@@ -63,10 +58,8 @@ const useDeleteImage = image => {
 			}
 
 			setDeleteSuccess(true)
-	
 		})();
-	}, [deleteSuccess]);
-
+	}, [image]);
 	return { deleteError, deleteSuccess }
 }
 

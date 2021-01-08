@@ -19,8 +19,9 @@ const useDeleteAlbum = album => {
 			// Get all albums owned by current user		
 			let albumsRef = db.collection('albums').where('owner', '==', currentUser.uid)
 			let allAlbums = await albumsRef.get()
+			
+			// Check if the album images also exist in other albums
 			let multipleExists = []
-
 			albumImages.forEach(image => {				
 				for(const doc of allAlbums.docs){
 					if (doc.id === album.id) {

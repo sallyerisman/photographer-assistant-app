@@ -8,6 +8,7 @@ const useAlbum = (albumId) => {
 	useEffect(() => {
 		setLoading(true);
 
+		// Snapshot listener for specific album
 		const unsubscribe = db.collection('albums').doc(albumId)
 		.onSnapshot(doc => {
 			setAlbum({

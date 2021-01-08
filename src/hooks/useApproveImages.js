@@ -15,17 +15,10 @@ const useApproveImages = (images, owner, title) => {
 
 		(async () => {
 			const reviewTitle = `${title} - Reviewed ${moment().format('LLL')}` 
-			const urlifiedTitle = reviewTitle
-				.toLowerCase()
-				.replace(/\s+/g, '-')
-				.replace(/å/g, 'a')
-				.replace(/ä/g, 'a')
-				.replace(/ö/g, 'o');
-			const inviteLink = `${urlifiedTitle}-${Date.now()}`
 
+			// Generate new album based on selection
 			await db.collection('albums').add({
 				images: images,
-				inviteLink,
 				title: reviewTitle,
 				owner,
 			})

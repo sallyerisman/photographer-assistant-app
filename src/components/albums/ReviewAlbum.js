@@ -1,22 +1,20 @@
 import { useParams } from 'react-router-dom'
 import PuffLoader from 'react-spinners/PuffLoader'
 import useAlbum from '../../hooks/useAlbum'
-import useInvitedAlbum from '../../hooks/useInvitedAlbum'
-import ImageGrid from './ImageGrid'
+import VisitorImageGrid from './VisitorImageGrid'
 
 const ReviewAlbum = () => {
-	const { inviteLink } = useParams()
-	const { foundAlbumId, isLoading } = useInvitedAlbum(inviteLink)
-	const { album, loading } = useAlbum(foundAlbumId)
+	const { albumId } = useParams()
+	const { album, loading } = useAlbum(albumId)
 
 	return (
 		<>	
-			{loading || isLoading
+			{loading 
 				? <PuffLoader className="loading-spinner"/>
 				: album && 
 					<>
 						<h2>{album.title}</h2>
-						<ImageGrid images={album.images} owner={album.owner} title={album.title} />
+						<VisitorImageGrid images={album.images} owner={album.owner} title={album.title} />
 					</>
 			}
 		</>

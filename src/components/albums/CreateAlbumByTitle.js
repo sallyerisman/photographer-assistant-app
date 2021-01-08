@@ -26,13 +26,6 @@ const CreateAlbumByTitle = () => {
 		setLoading(true)
 
 		const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1)
-		const urlifiedTitle = title
-			.toLowerCase()
-			.replace(/\s+/g, '-')
-			.replace(/å/g, 'a')
-			.replace(/ä/g, 'a')
-			.replace(/ö/g, 'o');
-		const inviteLink = `${urlifiedTitle}-${Date.now()}`
 		
 		try {
 			setLoading(true)
@@ -40,7 +33,6 @@ const CreateAlbumByTitle = () => {
 			// Add album to the 'albums' collection 
 			await db.collection('albums').add({
 				images: [],
-				inviteLink,
 				title: capitalizedTitle,
 				owner: currentUser.uid,
 			})

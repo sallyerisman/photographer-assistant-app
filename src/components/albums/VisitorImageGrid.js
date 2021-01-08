@@ -2,46 +2,16 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Image, Card, Col, Row } from 'react-bootstrap'
 import { SRLWrapper } from 'simple-react-lightbox'
-import { useAuth } from '../../contexts/AuthContext'
 import useApproveImages from '../../hooks/useApproveImages'
-import useDeleteImage from '../../hooks/useDeleteImage'
-import useUploadImages from '../../hooks/useUploadImages'
-import Checkbox from '../../helpers/Checkbox'
 
-const ImageGrid = ({ images, owner, title }) => {
+const VisitorImageGrid = ({ images, owner, title }) => {
 	const [approvedImages, setApprovedImages] = useState(null)
-	const [checkedItems, setCheckedItems] = useState({})
-	const { currentUser } = useAuth()
-	const [deleteImage, setDeleteImage] = useState(null)
 	const [dislikedImages, setDislikedImages] = useState([])
 	const [errorMessage, setErrorMessage] = useState(false)
-	const [imagesForUpload, setImagesForUpload] = useState(null)
 	const [likedImages, setLikedImages] = useState([])
 	const navigate = useNavigate()
-	const [selectedImages, setSelectedImages] = useState([])
 	const [showThumbnails, setShowThumbnails] = useState(false)
-	const [successMessage, setSuccessMessage] = useState(false)
 	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
-	const { error, isSuccess } = useUploadImages(imagesForUpload)
-	const { deleteError, deleteSuccess } = useDeleteImage(deleteImage)
-
-	useEffect(() => {
-		if (error) {
-			setErrorMessage("An error occurred and the album could not be created.")
-		} else if (isSuccess) {
-			// Prevent duplicate upload
-			setImagesForUpload(null);
-			navigate('/albums')
-		} 
-	}, [error, isSuccess]);
-	
-	useEffect(() => {
-		if (deleteError) {
-			setErrorMessage("An error occurred and the image could not be deleted.")
-		} else if (deleteSuccess) {
-			setSuccessMessage("The image was successfully deleted.")
-		} 
-	}, [deleteError, deleteSuccess]);
 
 	useEffect(() => {
 		if (reviewError) {
@@ -52,23 +22,6 @@ const ImageGrid = ({ images, owner, title }) => {
 			navigate('/thank-you')
 		} 
 	}, [reviewError, reviewSuccess]);
-
-	const handleChange = (e) => {
-		const imageUrl = e.target.name
-		setCheckedItems({...checkedItems, [imageUrl] : e.target.checked })
-		
-		let imageArray = selectedImages
-		
-		if (imageArray.includes(imageUrl)) {
-			for (let i = 0; i < imageArray.length; i++){     
-				imageArray[i] === imageUrl && imageArray.splice(i, 1) 			
-			}
-		} else {
-			imageArray.push(imageUrl)
-		}
-
-		setSelectedImages(imageArray);
-	}
 	
 	const handleDislike = (image) => {
 		let regretedLiked = likedImages;
@@ -116,25 +69,6 @@ const ImageGrid = ({ images, owner, title }) => {
 		setLikedImages(imagesToSave)
 	}
 
-	const handleCreateNewAlbum = (newImages) => {
-		let imagesToSave = []
-		let allImages = images
-
-		allImages.forEach(imgItem => {
-			if (newImages.includes(imgItem.url)) {
-				imagesToSave.push(imgItem)
-			}
-		})
-
-		currentUser ? setImagesForUpload(imagesToSave) : setApprovedImages(imagesToSave)
-	}
-
-	const handleDeleteImage = (image) => {
-		if (confirm(`Are you sure you want to delete image "${image.name}"?`)) {
-			setDeleteImage(image);
-		}
-	}
-
 	const handleReviewSelection = () => {
 		setShowThumbnails(true)
 	}
@@ -146,7 +80,6 @@ const ImageGrid = ({ images, owner, title }) => {
 	return (
 		<SRLWrapper>
 			{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-			{successMessage && <Alert variant="warning">{successMessage}</Alert>}
 
 			<Row>
 				{images && likedImages && likedImages.length > 0 &&
@@ -168,30 +101,15 @@ const ImageGrid = ({ images, owner, title }) => {
 								</Card.Text>
 							</Card.Body>
 
-							{currentUser 
-								? <>
-									<Checkbox
-										name={image.url}
-										checked={checkedItems[image.url]}
-										onChange={handleChange}
-									/>
-
-									<Button onClick={() => {handleDeleteImage(image)}}>Delete</Button>
-								</>
-								: <div>
-									<span onClick={() => handleLike(image)}>👍</span>
-									<span onClick={() => handleDislike(image)}>👎</span>
-								</div>							
-							}
+							<div>
+								<span onClick={() => handleLike(image)}>👍</span>
+								<span onClick={() => handleDislike(image)}>👎</span>
+							</div>							
 						</Card>
 					</Col>				
 				))}
 
-				{currentUser && selectedImages && selectedImages.length > 0 &&		
-					<Button onClick={() => handleCreateNewAlbum(selectedImages)}>Create new album</Button>
-				}
-
-				{!currentUser && dislikedImages.length + likedImages.length === images.length &&		
+				{dislikedImages.length + likedImages.length === images.length &&		
 					<Button onClick={handleReviewSelection}>Review selection</Button>
 				}		
 			</Row>
@@ -237,4 +155,4 @@ const ImageGrid = ({ images, owner, title }) => {
 	)
 }
 
-export default ImageGrid
+export default VisitorImageGrid

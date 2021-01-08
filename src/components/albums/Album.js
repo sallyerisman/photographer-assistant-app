@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Alert, Button } from 'react-bootstrap'
+import { Alert, Button, Col, Row } from 'react-bootstrap'
 import PuffLoader from 'react-spinners/PuffLoader'
+import { useAuth } from '../../contexts/AuthContext'
 import useAlbum from '../../hooks/useAlbum'
 import EditTitle from './EditTitle'
-import ImageGrid from './ImageGrid'
+import UserImageGrid from './UserImageGrid'
 import UploadImage from './UploadImage'
 
 const Album = () => {
 	const { albumId } = useParams()
 	const { album, loading } = useAlbum(albumId)
+	const { currentUser } = useAuth()
 	const [editTitle, setEditTitle] = useState(false)
 	const [invite, setInvite] = useState(null)
 
@@ -17,34 +19,37 @@ const Album = () => {
         setEditTitle(true);
 	};
 	
-	const handleInvite = (inviteLink) => {
-        setInvite(inviteLink);
+	const handleInvite = (albumId) => {
+        setInvite(`review/${albumId}`);
     };
 	
 	return (
-		<>	
-			{invite && <Alert variant="warning">{invite}</Alert>}
+		<Row>
+			<Col>		
+				{invite && <Alert variant="info">{invite}</Alert>}
 
-			{loading
-				? <PuffLoader className="loading-spinner"/>
-				: album && 
-					<>
-						{editTitle 
-							? <EditTitle album={album}/> 
-							: <>
-								<h2>{album.title} <span onClick={handleEditTitle}>🖋</span></h2>
-								<UploadImage albumId={albumId} />
-								<ImageGrid images={album.images}/>
-								<Button 
-									disabled={loading} 
-									onClick={() => handleInvite(album.inviteLink)}
-									>Create invite link
-								</Button>
-							</>
-						}
-					</>
-			}
-		</>
+				{loading
+					? <PuffLoader className="loading-spinner"/>
+					: album && 
+						<>
+							{currentUser &&
+								editTitle 
+									? <EditTitle album={album}/> 
+									: <>
+										<h2>{album.title} <span onClick={handleEditTitle}>🖋</span></h2>
+										<UploadImage albumId={albumId} />
+										<UserImageGrid images={album.images}/>
+										<Button 
+											disabled={loading} 
+											onClick={() => handleInvite(albumId)}
+											>Create invite link
+										</Button>
+									</>					
+							}
+						</>
+				}
+			</Col>
+		</Row>
 	)
 }
 

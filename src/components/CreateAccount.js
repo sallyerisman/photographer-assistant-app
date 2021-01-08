@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
-import { Row, Col, Form, Button, Card, Alert } from 'react-bootstrap'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 
 const CreateAccount = () => {
@@ -57,7 +57,6 @@ const CreateAccount = () => {
 					</Form.Group>
 
 					<Button disabled={loading} type="submit">Create account</Button>
-
 				</Form>
 
 				<div>

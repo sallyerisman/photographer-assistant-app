@@ -10,18 +10,18 @@ const UploadImages = () => {
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [successMessage, setSuccessMessage] = useState(false)
 	const [uploadImages, setUploadImages] = useState(null)
-	const { error, isSuccess, uploadProgress } = useUploadImages(uploadImages, albumId)
+	const { error, success, uploadProgress } = useUploadImages(uploadImages, albumId)
 
 	useEffect(() => {
 		if (error) {
 			setErrorMessage("An error occurred and the upload could not be performed.")
-		} else if (isSuccess) {
+		} else if (success) {
 			setSuccessMessage("The upload was successful!")
 			
 			// Prevent duplicate upload
 			setUploadImages(null);
 		} 
-	}, [error, isSuccess]);
+	}, [error, success]);
 
 	const onDrop = useCallback(acceptedFiles => {
 		if (acceptedFiles.length === 0) {
@@ -40,14 +40,8 @@ const UploadImages = () => {
 		<div {...getRootProps()} 
 			id="upload-image-dropzone-wrapper" 
 			className={`
-				${isDragAccept 
-					? `drag-accept`
-					: ``
-				} 
-				${isDragReject 
-					? `drag-reject`
-					: ``
-				}
+				${isDragAccept && `drag-accept`} 
+				${isDragReject && `drag-reject`}
 			`}>
 
 			<input {...getInputProps()} />
@@ -60,8 +54,8 @@ const UploadImages = () => {
 			}
 
 			{acceptedFiles && (
-				<div className="accepted-files mt-2">
-					<ul className="list-unstyled">
+				<div className="accepted-files">
+					<ul>
 						{acceptedFiles.map(file => (
 							<li key={file.name}><small>{file.name} ({Math.round(file.size / 1024)} kb)</small></li>
 						))}

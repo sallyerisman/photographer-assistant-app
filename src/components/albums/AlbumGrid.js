@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card } from 'react-bootstrap'
 import useDeleteAlbum from '../../hooks/useDeleteAlbum'
@@ -16,7 +16,7 @@ const AlbumGrid = ({ albums }) => {
 	}, [deleteError, deleteSuccess]);
 
 	const handleDeleteAlbum = (album) => {
-		if (confirm(`Are you sure you want to delete album "${album.title} and its content"?`)) {
+		if (confirm(`Are you sure you want to delete album "${album.title}"?`)) {
 			setDeleteAlbum(album);
 		}
 	}

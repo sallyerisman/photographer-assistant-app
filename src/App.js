@@ -33,22 +33,22 @@ const App = () => {
 								<Home />
 							</Route>
 
-							<Route path="/:inviteLink">
+							<Route path="/review/:albumId">
 								<ReviewAlbum />
 							</Route>
 
 							<AuthRoute path="/albums">
-								<Route path="/">
+								<AuthRoute path="/">
 									<Albums />
-								</Route>
+								</AuthRoute>
 
-								<Route path="/create">
+								<AuthRoute path="/create">
 									<CreateAlbumByTitle />
-								</Route>
+								</AuthRoute>
 
-								<Route path="/:albumId">
+								<AuthRoute path="/:albumId">
 									<Album />
-								</Route>
+								</AuthRoute>
 							</AuthRoute>
 							
 							<Route path="/create-account">
