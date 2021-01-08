@@ -10,8 +10,8 @@ import UploadImage from './UploadImage'
 const Album = () => {
 	const { albumId } = useParams()
 	const { album, loading } = useAlbum(albumId)
-	const [editTitle, setEditTitle] = useState(false);
-	const [invite, setInvite] = useState(null);
+	const [editTitle, setEditTitle] = useState(false)
+	const [invite, setInvite] = useState(null)
 
 	const handleEditTitle = () => {
         setEditTitle(true);

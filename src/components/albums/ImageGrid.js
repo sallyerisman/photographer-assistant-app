@@ -23,7 +23,7 @@ const ImageGrid = ({ images, owner, title }) => {
 	const [successMessage, setSuccessMessage] = useState(false)
 	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
 	const { error, isSuccess } = useUploadImages(imagesForUpload)
-	const { deleteError, deleteSuccess } = useDeleteImage(deleteImage);
+	const { deleteError, deleteSuccess } = useDeleteImage(deleteImage)
 
 	useEffect(() => {
 		if (error) {
@@ -37,7 +37,7 @@ const ImageGrid = ({ images, owner, title }) => {
 	
 	useEffect(() => {
 		if (deleteError) {
-			setErrorMessage("An error occurred and the album could not be created.")
+			setErrorMessage("An error occurred and the image could not be deleted.")
 		} else if (deleteSuccess) {
 			setSuccessMessage("The image was successfully deleted.")
 		} 
