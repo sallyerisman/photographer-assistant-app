@@ -8,7 +8,7 @@ const useApproveImages = (images, owner, title) => {
 
 	useEffect(() => {
 		if (images === null || images.length === 0) {
-			setReviewError(null)
+			setReviewError(false)
 			setReviewSuccess(false)
 			return;
 		}

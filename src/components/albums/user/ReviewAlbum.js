@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import PuffLoader from 'react-spinners/PuffLoader'
-import useAlbum from '../../hooks/useAlbum'
-import VisitorImageGrid from './VisitorImageGrid'
+import useAlbum from '../../../hooks/useAlbum'
+import ImageGrid from './ImageGrid'
 
 const ReviewAlbum = () => {
 	const { albumId } = useParams()
@@ -14,7 +14,7 @@ const ReviewAlbum = () => {
 				: album && 
 					<>
 						<h2>{album.title}</h2>
-						<VisitorImageGrid images={album.images} owner={album.owner} title={album.title} />
+						<ImageGrid images={album.images} owner={album.owner} title={album.title} />
 					</>
 			}
 		</>

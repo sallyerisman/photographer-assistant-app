@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 const ForgotPassword = () => {
-	const emailRef = useRef()
 	const [error, setError] = useState(null)
-	const [message, setMessage] = useState(null)
 	const [loading, setLoading] = useState(false)
+	const [message, setMessage] = useState(null)
+	const emailRef = useRef()
+	
 	const { resetPassword } = useAuth()
 
 	const handleSubmit = async (e) => {

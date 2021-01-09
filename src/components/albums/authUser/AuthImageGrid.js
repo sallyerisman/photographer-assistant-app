@@ -2,22 +2,23 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
 import { SRLWrapper } from 'simple-react-lightbox'
-import { useAuth } from '../../contexts/AuthContext'
-import useDeleteImage from '../../hooks/useDeleteImage'
-import useUploadImages from '../../hooks/useUploadImages'
-import Checkbox from '../../helpers/Checkbox'
+import { useAuth } from '../../../contexts/AuthContext'
+import useDeleteImage from '../../../hooks/useDeleteImage'
+import useUploadImages from '../../../hooks/useUploadImages'
+import Checkbox from '../../../helpers/Checkbox'
 
-const UserImageGrid = ({ images }) => {
+const AuthImageGrid = ({ images }) => {
 	const [checkedItems, setCheckedItems] = useState({})
-	const { currentUser } = useAuth()
 	const [deleteImage, setDeleteImage] = useState(null)
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [imagesForUpload, setImagesForUpload] = useState(null)
-	const navigate = useNavigate()
 	const [selectedImages, setSelectedImages] = useState([])
 	const [successMessage, setSuccessMessage] = useState(false)
-	const { error, success } = useUploadImages(imagesForUpload)
+
+	const { currentUser } = useAuth()
 	const { deleteError, deleteSuccess } = useDeleteImage(deleteImage)
+	const { error, success } = useUploadImages(imagesForUpload)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		if (error) {
@@ -116,4 +117,4 @@ const UserImageGrid = ({ images }) => {
 	)
 }
 
-export default UserImageGrid
+export default AuthImageGrid

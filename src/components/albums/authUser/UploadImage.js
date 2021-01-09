@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 import ProgressBar from 'react-bootstrap/esm/ProgressBar'
 import { useDropzone } from 'react-dropzone'
-import useUploadImages from '../../hooks/useUploadImages'
+import useUploadImages from '../../../hooks/useUploadImages'
 
 const UploadImages = () => {
-	const { albumId } = useParams()
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [successMessage, setSuccessMessage] = useState(false)
 	const [uploadImages, setUploadImages] = useState(null)
+
+	const { albumId } = useParams()
 	const { error, success, uploadProgress } = useUploadImages(uploadImages, albumId)
 
 	useEffect(() => {

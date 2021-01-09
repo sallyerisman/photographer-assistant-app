@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Form } from 'react-bootstrap'
-import { db } from '../../firebase'
+import { db } from '../../../firebase'
 
 const EditTitle = ({ album }) => {
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [newTitle, setNewTitle] = useState("")
+	
 	const navigate = useNavigate()
 
 	const handleTitleChange = (e) => {
@@ -32,7 +33,7 @@ const EditTitle = ({ album }) => {
 			});
 
 			navigate(`/albums/${album.id}`)
-			window.location.reload()
+			// window.location.reload()
 
 		} catch (e) {
 			setError("Something went wrong and the title could not be updated. Please try again.")

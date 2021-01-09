@@ -5,19 +5,19 @@ import './assets/scss/app.scss'
 
 import AuthContextProvider from './contexts/AuthContext'
 
-import Album from './components/albums/Album'
-import Albums from './components/albums/Albums'
+import Album from './components/albums/authUser/Album'
+import Albums from './components/albums/authUser/Albums'
 import AuthRoute from './components/AuthRoute'
-import CreateAccount from './components/CreateAccount'
-import CreateAlbumByTitle from './components/albums/CreateAlbumByTitle'
-import ForgotPassword from './components/ForgotPassword'
+import CreateAccount from './components/userAccount/CreateAccount'
+import CreateAlbumByTitle from './components/albums/authUser/CreateAlbumByTitle'
+import ForgotPassword from './components/userAccount/ForgotPassword'
 import Home from './components/Home'
-import Login from './components/Login'
-import Logout from './components/Logout'
+import Login from './components/userAccount/Login'
+import Logout from './components/userAccount/Logout'
 import Navigation from './components/Navigation'
 import NotFound from './components/NotFound'
-import ReviewAlbum from './components/albums/ReviewAlbum'
-import ReviewConfirmation from './components/albums/ReviewConfirmation'
+import ReviewAlbum from './components/albums/user/ReviewAlbum'
+import ReviewConfirmation from './components/albums/user/ReviewConfirmation'
 
 const App = () => {
 	return (

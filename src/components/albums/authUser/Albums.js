@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import PuffLoader from 'react-spinners/PuffLoader'
-import { useAuth } from '../../contexts/AuthContext'
-import useAlbums from '../../hooks/useAlbums'
+import { useAuth } from '../../../contexts/AuthContext'
+import useAlbums from '../../../hooks/useAlbums'
 import AlbumGrid from './AlbumGrid'
 
 const Albums = () => {
-	const { currentUser } = useAuth()
 	const { albums, loading } = useAlbums()
+	const { currentUser } = useAuth()
 
 	return (
 		<Row>

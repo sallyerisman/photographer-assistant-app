@@ -4,8 +4,9 @@ import { useAuth } from '../contexts/AuthContext'
 
 const useAlbums = () => {
 	const [albums, setAlbums] = useState([])
-	const { currentUser } = useAuth()
 	const [loading, setLoading] = useState(true)
+
+	const { currentUser } = useAuth()
 
 	useEffect(() => {
 		// Snapshot listener for all of the user's albums in firebase

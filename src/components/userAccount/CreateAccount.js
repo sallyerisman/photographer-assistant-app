@@ -1,16 +1,17 @@
 import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 const CreateAccount = () => {
-	const { createAccount } = useAuth()
-	const emailRef = useRef()
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
-	const navigate = useNavigate()
+	const emailRef = useRef()
 	const passwordConfirmRef = useRef()
 	const passwordRef = useRef()
+
+	const { createAccount } = useAuth()
+	const navigate = useNavigate()
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()

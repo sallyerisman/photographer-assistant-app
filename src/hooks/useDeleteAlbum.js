@@ -4,9 +4,10 @@ import { db, storage } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 
 const useDeleteAlbum = album => {
-	const { currentUser } = useAuth()
 	const [deleteError, setDeleteError] = useState(false)
 	const [deleteSuccess, setDeleteSuccess] = useState(false)
+
+	const { currentUser } = useAuth()
 
 	useEffect(() => {
 		if (!album) {

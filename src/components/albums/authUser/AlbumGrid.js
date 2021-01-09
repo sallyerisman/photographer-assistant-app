@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card } from 'react-bootstrap'
-import useDeleteAlbum from '../../hooks/useDeleteAlbum'
+import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
 
 const AlbumGrid = ({ albums }) => {
 	const [deleteAlbum, setDeleteAlbum] = useState(false)

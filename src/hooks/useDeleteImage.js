@@ -4,10 +4,11 @@ import { db, storage } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 
 const useDeleteImage = image => {
-	const { albumId } = useParams()
-	const { currentUser } = useAuth()
 	const [deleteError, setDeleteError] = useState(false)
 	const [deleteSuccess, setDeleteSuccess] = useState(false)
+
+	const { albumId } = useParams()
+	const { currentUser } = useAuth()
 
 	useEffect(() => {
 		if (!image) {

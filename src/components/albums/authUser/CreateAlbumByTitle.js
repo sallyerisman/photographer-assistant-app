@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
-import { db } from '../../firebase'
-import { useAuth } from '../../contexts/AuthContext'
+import { db } from '../../../firebase'
+import { useAuth } from '../../../contexts/AuthContext'
 
 const CreateAlbumByTitle = () => {
-	const { currentUser } = useAuth()
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [title, setTitle] = useState("")
+
+	const { currentUser } = useAuth()
 	const navigate = useNavigate()
 
 	const handleTitleChange = (e) => {

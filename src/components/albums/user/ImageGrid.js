@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Image, Card, Col, Row } from 'react-bootstrap'
 import { SRLWrapper } from 'simple-react-lightbox'
-import useApproveImages from '../../hooks/useApproveImages'
+import useApproveImages from '../../../hooks/useApproveImages'
 
-const VisitorImageGrid = ({ images, owner, title }) => {
+const ImageGrid = ({ images, owner, title }) => {
 	const [approvedImages, setApprovedImages] = useState(null)
 	const [dislikedImages, setDislikedImages] = useState([])
 	const [errorMessage, setErrorMessage] = useState(false)
 	const [likedImages, setLikedImages] = useState([])
-	const navigate = useNavigate()
 	const [showThumbnails, setShowThumbnails] = useState(false)
+
+	const navigate = useNavigate()
 	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
 
 	useEffect(() => {
@@ -155,4 +156,4 @@ const VisitorImageGrid = ({ images, owner, title }) => {
 	)
 }
 
-export default VisitorImageGrid
+export default ImageGrid

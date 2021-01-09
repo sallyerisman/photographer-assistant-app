@@ -4,10 +4,11 @@ import moment from 'moment'
 import { useAuth } from '../contexts/AuthContext'
 
 const useUploadImages = (images, albumId = null) => {
-	const { currentUser } = useAuth()
 	const [error, setError] = useState(false)
 	const [success, setSuccess] = useState(false)
 	const [uploadProgress, setUploadProgress] = useState(null)
+
+	const { currentUser } = useAuth()
 
 	useEffect(() => {
 		if (images === null || images.length === 0) {
