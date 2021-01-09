@@ -1,7 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-// Dropzone styles
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
+body {
+	font-family: 'Lato', sans-serif;
+}
+
+p {
+	font-weight: 300;
+}
+
+
+// Dropzone 
  #upload-image-dropzone-wrapper {
 	background-color: #eee;
 	border: 2px solid #999;
@@ -19,8 +34,117 @@
 	}
 }
 
+// Icons
+.icon__login {
+	width: 120%;
+	height: auto;
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		width: 130%;
+		height: auto;	
+	}
+}
+
+.icon__images {
+	font-size: 3rem;
+	margin-right: 4rem;
+	transform: rotate(15deg);
+
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		margin-left: 3rem;
+
+	}
+}
+
+// Layout 
+.home-page {
+	display: flex;
+	flex-direction: column;
+}
+
+// Links
+.link {
+	color: black;
+	text-decoration: none;
+
+	&:hover { 
+		color: black;
+		text-decoration: none; 
+		transform: scale(1.1);
+	}
+}
+
+.text-link {
+	font-weight: 400;
+
+	&:hover { 
+		font-weight: 700;
+
+	}
+}
 
 
+// Navigation 
 .navigation {
-    border-bottom: 1px solid black;
+	border-bottom: 1px solid #111;
+	font-weight: 300;
+}
+
+
+// Page logo
+.logo-wrapper {
+	display: flex;
+	align-items: center;
+
+	.logo {
+		margin-right: 8px;
+		transform: rotate(350deg);
+	}
+}
+
+/* Typography */
+
+// Headings
+.heading {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+}
+
+.heading__home-page {
+	font-size: 1.6rem;
+	line-height: 2.3rem;
+	display: flex;
+	align-items: center;
+}
+
+.ingress {
+	font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive layout styles */
+
+// Tablet
+@media only screen and (min-width: 768px) {
+
+}
+
+
+
+// Desktop 
+
+@media only screen and (min-width: 992px) {
 }
