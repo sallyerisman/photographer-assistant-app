@@ -9,6 +9,7 @@ import AuthImageGrid from './AuthImageGrid'
 import UploadImage from './UploadImage'
 
 const Album = () => {
+	const [copySuccess, setCopySuccess] = useState('')
 	const [editTitle, setEditTitle] = useState(false)
 	const [invite, setInvite] = useState(null)
 
@@ -16,18 +17,37 @@ const Album = () => {
 	const { album, loading } = useAlbum(albumId)
 	const { currentUser } = useAuth()
 
+	const handleCopyLink = async link => {
+		try {
+		  await navigator.clipboard.writeText(link);
+		  setCopySuccess("Copied!");
+		} catch (err) {
+		  setCopySuccess("Failed to copy.");
+		}
+	}
+	
 	const handleEditTitle = () => {
         setEditTitle(true);
 	};
 	
-	const handleInvite = (albumId) => {
-        setInvite(`review/${albumId}`);
+	const handleInvite = () => {
+		const href = window.location.href
+        setInvite(`${href}/review`);
     };
 	
 	return (
 		<Row>
 			<Col>		
-				{invite && <Alert variant="info">{invite}</Alert>}
+				{invite && 
+					<Alert variant="info">{invite}
+						<div>
+							<Button onClick={() => handleCopyLink(invite)}>
+								Copy
+							</Button>
+							{copySuccess}
+						</div>		
+					</Alert>
+				}
 
 				{loading
 					? <PuffLoader className="loading-spinner"/>
@@ -42,7 +62,7 @@ const Album = () => {
 										<AuthImageGrid images={album.images}/>
 										<Button 
 											disabled={loading} 
-											onClick={() => handleInvite(albumId)}
+											onClick={handleInvite}
 											>Create invite link
 										</Button>
 									</>					

@@ -88,69 +88,68 @@ const ImageGrid = ({ images, owner, title }) => {
 				}
 			</Row>
 
-			<Row>
-				{images &&
-				images.map((image, index) => (
-					<Col sm={6} md={4} lg={3} key={index}>
-						<Card>
-							<a href={image.url} title="View image in lightbox" data-attribute="SRL">
-								<Card.Img variant="top" src={image.url} title={image.name} />
-							</a>
-							<Card.Body>
-								<Card.Text>
-									{image.name} ({Math.round(image.size/1024)} kb)
-								</Card.Text>
-							</Card.Body>
+			{!showThumbnails
+					? <Row>
+						{images &&
+						images.map((image, index) => (
+							<Col sm={6} md={4} lg={3} key={index}>
+								<Card>
+									<a href={image.url} title="View image in lightbox" data-attribute="SRL">
+										<Card.Img variant="top" src={image.url} title={image.name} />
+									</a>
+									<Card.Body>
+										<Card.Text>
+											{image.name} ({Math.round(image.size/1024)} kb)
+										</Card.Text>
+									</Card.Body>
 
-							<div>
-								<span onClick={() => handleLike(image)}>👍</span>
-								<span onClick={() => handleDislike(image)}>👎</span>
-							</div>							
-						</Card>
-					</Col>				
-				))}
+									<div>
+										<span onClick={() => handleLike(image)}>👍</span>
+										<span onClick={() => handleDislike(image)}>👎</span>
+									</div>							
+								</Card>
+							</Col>				
+						))}
 
-				{dislikedImages.length + likedImages.length === images.length &&		
-					<Button onClick={handleReviewSelection}>Review selection</Button>
-				}		
-			</Row>
-
-			{showThumbnails &&
-				<>
-					<Row>
-						<Col>
-							{likedImages && likedImages.length > 0 &&
-								<>
-									<h3>Images to keep:</h3>
-									{likedImages.map((image, index) => (
-										<Col xs={6} md={4} key={index}>
-											<Image src={image.url} alt="" fluid thumbnail/>
-											<Button variant="danger" onClick={() => handleDislike(image)}>X</Button>
-										</Col>
-									))}
-								</>
-							}
-						</Col>
-
-						<Col>
-							{dislikedImages && dislikedImages.length > 0 &&
-								<>
-									<h3>Images to remove:</h3>
-									{dislikedImages.map((image, index) => (
-										<Col xs={6} md={4} key={index}>
-											<Image src={image.url} alt="" fluid thumbnail/>
-											<Button variant="danger" onClick={() => handleLike(image)}>X</Button>	
-										</Col>
-									))}
-								</>
-							}	
-						</Col>			
+						{dislikedImages.length + likedImages.length === images.length &&		
+							<Button onClick={handleReviewSelection}>Review selection</Button>
+						}		
 					</Row>
+					: <>
+						<Row>
+							<Col>
+								{likedImages && likedImages.length > 0 &&
+									<>
+										<h3>Images to keep:</h3>
+										{likedImages.map((image, index) => (
+											<Col xs={6} md={4} key={index}>
+												<Image src={image.url} alt="" fluid thumbnail/>
+												<Button variant="danger" onClick={() => handleDislike(image)}>X</Button>
+											</Col>
+										))}
+									</>
+								}
+							</Col>
 
-					{dislikedImages.length + likedImages.length === images.length &&
-						<Button onClick={() => handleFinalizeSelection(likedImages)}>Finalize your selection</Button>
-					}
-				</>			
+							<Col>
+								{dislikedImages && dislikedImages.length > 0 &&
+									<>
+										<h3>Images to remove:</h3>
+										{dislikedImages.map((image, index) => (
+											<Col xs={6} md={4} key={index}>
+												<Image src={image.url} alt="" fluid thumbnail/>
+												<Button variant="danger" onClick={() => handleLike(image)}>X</Button>	
+											</Col>
+										))}
+									</>
+								}	
+							</Col>			
+						</Row>
+
+						{dislikedImages.length + likedImages.length === images.length &&
+							<Button onClick={() => handleFinalizeSelection(likedImages)}>Finalize your selection</Button>
+						}
+					</>					
 			}
 		</SRLWrapper>
 	)

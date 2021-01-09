@@ -33,7 +33,7 @@ const App = () => {
 								<Home />
 							</Route>
 
-							<Route path="/review/:albumId">
+							<Route path="/albums/:albumId/review">
 								<ReviewAlbum />
 							</Route>
 
