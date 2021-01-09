@@ -12,6 +12,7 @@ import CreateAccount from './components/userAccount/CreateAccount'
 import CreateAlbumByTitle from './components/albums/authUser/CreateAlbumByTitle'
 import ForgotPassword from './components/userAccount/ForgotPassword'
 import Home from './components/Home'
+import LogedOut from './components/userAccount/LogedOut'
 import Login from './components/userAccount/Login'
 import Logout from './components/userAccount/Logout'
 import Navigation from './components/Navigation'
@@ -65,6 +66,10 @@ const App = () => {
 
 							<Route path="/logout">
 								<Logout />
+							</Route>
+
+							<Route path="/good-bye">
+								<LogedOut />
 							</Route>
 
 							<Route path="/thank-you">

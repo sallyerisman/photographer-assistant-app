@@ -8,7 +8,7 @@ const Navigation = () => {
 
 	return (
         <Navbar className="navigation">
-            <Container>
+            <Container className="navigation-container">
                 <Link to="/" className="link logo-wrapper">
                     <Images className="logo" />
                     Photo Helper                

@@ -36,8 +36,8 @@ const CreateAccount = () => {
 
 	return (
 		<Row>
-			<Col>
-				<h2>Create new account</h2>
+			<Col md={{ span: 6, offset: 3 }} className="page">
+				<h1>Create a new account</h1>
 
 				{error && (<Alert variant="danger">{error}</Alert>)}
 
@@ -57,12 +57,10 @@ const CreateAccount = () => {
 						<Form.Control type="password" ref={passwordConfirmRef} required />
 					</Form.Group>
 
-					<Button disabled={loading} type="submit">Create account</Button>
+					<Button disabled={loading} variant="info" className="btn btn__create-account" type="submit">Create account</Button>
 				</Form>
-
-				<div>
-					Already have an account? <Link to="/login">Log in</Link>
-				</div>
+				
+				<p>Already have an account? <Link to="/login" className="link text-link">Log in here</Link></p>
 			</Col>
 		</Row>
 	)

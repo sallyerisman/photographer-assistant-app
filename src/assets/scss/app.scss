@@ -13,8 +13,64 @@ body {
 
 p {
 	font-weight: 300;
+	letter-spacing: 0.04em;
 }
 
+// Layout 
+.container {
+	max-width: 340px;
+
+	// Tablet portrait
+	@media only screen and (min-width: 600px) {
+		max-width: 520px;
+	}
+
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		max-width: 680px;
+	}
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		max-width: 900px;
+	}
+}
+
+.page {
+	padding-top: 2rem;
+
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		padding-top: 3rem;
+	}
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		padding-top: 3.5rem;
+	}
+
+	&.page__not-found {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+}
+
+.home-page {
+	display: flex;
+	flex-direction: column;
+}
+
+// Buttons
+.btn {
+	color: white;
+	background-color: darkslategrey;
+	border: none;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	padding: 0.5rem 1rem;
+}
 
 // Dropzone 
  #upload-image-dropzone-wrapper {
@@ -35,9 +91,21 @@ p {
 }
 
 // Icons
+.icon__arrow-left {
+	margin-right: 0.5rem;
+}
+
+.icon__arrow-right {
+	margin-left: 0.5rem;
+}
+
 .icon__login {
 	width: 120%;
 	height: auto;
+
+	&:hover { 
+		color: darkslategrey;
+	}
 
 	// Desktop 
 	@media only screen and (min-width: 992px) {
@@ -46,22 +114,16 @@ p {
 	}
 }
 
-.icon__images {
+.icon__not-found {
+	color: darkred;
 	font-size: 3rem;
-	margin-right: 4rem;
-	transform: rotate(15deg);
+	margin-top: 3rem;
+	margin-bottom: 2rem;
 
-	// Tablet
-	@media only screen and (min-width: 768px) {
-		margin-left: 3rem;
-
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		font-size: 4rem;
 	}
-}
-
-// Layout 
-.home-page {
-	display: flex;
-	flex-direction: column;
 }
 
 // Links
@@ -74,17 +136,17 @@ p {
 		text-decoration: none; 
 		transform: scale(1.1);
 	}
-}
 
-.text-link {
-	font-weight: 400;
-
-	&:hover { 
-		font-weight: 700;
-
+	&.text-link {
+		font-weight: 400;
+	
+		&:hover { 
+			color: darkslategrey;
+			font-weight: 700;
+	
+		}
 	}
 }
-
 
 // Navigation 
 .navigation {
@@ -92,6 +154,10 @@ p {
 	font-weight: 300;
 }
 
+.navbar-expand > .container {
+	padding-left: 15px;
+	padding-right: 15px;
+}
 
 // Page logo
 .logo-wrapper {
@@ -107,16 +173,11 @@ p {
 /* Typography */
 
 // Headings
-.heading {
-	margin-top: 0.8em;
-	margin-bottom: 0.8em;
-}
 
-.heading__home-page {
+h1 {
 	font-size: 1.6rem;
 	line-height: 2.3rem;
-	display: flex;
-	align-items: center;
+	margin-bottom: 0.8em;
 }
 
 .ingress {
@@ -145,6 +206,5 @@ p {
 
 
 // Desktop 
-
 @media only screen and (min-width: 992px) {
 }
