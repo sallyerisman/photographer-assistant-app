@@ -17,12 +17,13 @@ const Album = () => {
 	const { album, loading } = useAlbum(albumId)
 	const { currentUser } = useAuth()
 
-	const handleCopyLink = async link => {
+	const handleCopyLink = async (link) => {
+		// Try to copy the link text to clipboard
 		try {
-		  await navigator.clipboard.writeText(link);
-		  setCopySuccess("Copied!");
+		  await navigator.clipboard.writeText(link)
+		  setCopySuccess("Copied!")
 		} catch (err) {
-		  setCopySuccess("Failed to copy.");
+		  setCopySuccess("Failed to copy.")
 		}
 	}
 	

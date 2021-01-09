@@ -16,21 +16,25 @@ const useApproveImages = (images, owner, title) => {
 		(async () => {
 			const reviewTitle = `${title} - Reviewed ${moment().format('LLL')}` 
 
-			// Generate new album based on selection
-			await db.collection('albums').add({
-				images: images,
-				title: reviewTitle,
-				owner,
-			})
-						
-			// On success, set relevant statuses 
-			setReviewError(false)
-			setReviewSuccess(true);
-		})();
-		
+			try {
+				// Generate new album based on selection
+				await db.collection('albums').add({
+					images: images,
+					title: reviewTitle,
+					owner,
+				})
+							
+				// On success, set relevant statuses 
+				setReviewError(false)
+				setReviewSuccess(true)
+			} catch (err) {
+				setReviewError(true)
+				setReviewSuccess(false)
+			}
+		})();		
 	}, [images]);
 
-	return { reviewError, reviewSuccess };
+	return { reviewError, reviewSuccess }
 }
 
 export default useApproveImages

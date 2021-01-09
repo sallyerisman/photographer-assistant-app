@@ -72,22 +72,29 @@ const useUploadImages = (images, albumId = null) => {
 		} else {
 			(async () => {
 				const title = `New album ${moment().format('LLL')}` 
-	
-				await db.collection('albums').add({
-					images: images,
-					title,
-					owner: currentUser.uid,
-				})
-							
-				// On success, set relevant statuses 
-				setError(false)
-				setSuccess(true);
-				setUploadProgress(null);
+
+				try {
+					await db.collection('albums').add({
+						images: images,
+						title,
+						owner: currentUser.uid,
+					})
+								
+					// On success, set relevant statuses 
+					setError(false)
+					setSuccess(true)
+					setUploadProgress(null)
+
+				} catch (err) {
+					setError(true)
+					setSuccess(false)
+					setUploadProgress(null)
+				}
 			})();
 		}
 	}, [currentUser, images]);
 
-	return { error, success, uploadProgress };
+	return { error, success, uploadProgress }
 }
 
 export default useUploadImages

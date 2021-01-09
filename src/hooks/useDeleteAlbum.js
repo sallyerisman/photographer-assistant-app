@@ -17,39 +17,44 @@ const useDeleteAlbum = album => {
 		(async () => {
 			let albumImages = album.images.map(image => image.path)
 
-			// Get all albums owned by current user		
-			let albumsRef = db.collection('albums').where('owner', '==', currentUser.uid)
-			let allAlbums = await albumsRef.get()
-			
-			// Check if the album images also exist in other albums
-			let multipleExists = []
-			albumImages.forEach(image => {				
-				for(const doc of allAlbums.docs){
-					if (doc.id === album.id) {
-						continue
-					} else {
-						let imageArray = doc.data().images
+			try {
+				// Get all albums owned by current user		
+				let albumsRef = db.collection('albums').where('owner', '==', currentUser.uid)
+				let allAlbums = await albumsRef.get()
+				
+				// Check if the album images also exist in other albums
+				let multipleExists = []
+				albumImages.forEach(image => {				
+					for(const doc of allAlbums.docs){
+						if (doc.id === album.id) {
+							continue
+						} else {
+							let imageArray = doc.data().images
 
-						imageArray.forEach(arrayItem => {
-							if (arrayItem.path === image) {
-								multipleExists.push(image)
-							}
-						})
+							imageArray.forEach(arrayItem => {
+								if (arrayItem.path === image) {
+									multipleExists.push(image)
+								}
+							})
+						}
 					}
-				}
-			})
+				})
 
-			const intersections = albumImages.filter(img => multipleExists.indexOf(img) === -1);
+				const intersections = albumImages.filter(img => multipleExists.indexOf(img) === -1);
 
-			// Delete album and its content from firestore
-			await db.collection('albums').doc(album.id).delete()
+				// Delete album and its content from firestore
+				await db.collection('albums').doc(album.id).delete()
 
-			intersections.forEach(async img => {
-				// Delete image from storage
-				await storage.ref(img).delete();
-			})
-			
-			setDeleteSuccess(true)
+				intersections.forEach(async img => {
+					// Delete image from storage
+					await storage.ref(img).delete();
+				})
+				
+				setDeleteSuccess(true)
+			} catch (err) {
+				setDeleteError(true)
+				setDeleteSuccess(false)
+			}
 		})();
 	}, [album]);
 	return { deleteError, deleteSuccess }

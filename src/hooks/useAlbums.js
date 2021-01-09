@@ -19,7 +19,7 @@ const useAlbums = () => {
 				snapshot.forEach(doc => {
 					snapshotAlbums.push({
 						id: doc.id,
-						...doc.data(),
+						...doc.data()
 					})
 				})
 

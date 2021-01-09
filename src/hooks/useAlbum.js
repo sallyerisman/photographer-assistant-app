@@ -13,7 +13,7 @@ const useAlbum = (albumId) => {
 		.onSnapshot(doc => {
 			setAlbum({
 				id: doc.id,
-				...doc.data(),
+				...doc.data()
 			})
 		});
 
