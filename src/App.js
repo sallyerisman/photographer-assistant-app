@@ -27,7 +27,7 @@ const App = () => {
 				<SimpleReactLightbox>
 					<Navigation />
 
-					<Container>
+					<Container className="container__page">
 						<Routes>
 
 							<Route path="/">

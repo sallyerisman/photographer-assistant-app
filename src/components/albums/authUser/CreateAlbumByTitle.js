@@ -57,15 +57,14 @@ const CreateAlbumByTitle = () => {
 
 				<Form onSubmit={handleSubmit} className="form form__create-album">
 					<Form.Group id="title">
-						<Form.Label>Album title</Form.Label>
-						<Form.Control type="title" onChange={handleTitleChange} value={title} autoFocus required />
+						<Form.Control type="title" onChange={handleTitleChange} value={title} placeholder="Enter your album title" autoFocus required />
 
 						{title && title.length < 3 && 
 							<Form.Text className="text__alert">The album title must consist of at least 3 characters.</Form.Text>
 						}
 
 					</Form.Group>
-					<Button disabled={loading} className="btn btn__create-album" type="submit">Create</Button>
+					<Button disabled={loading} className="btn btn__primary" type="submit" variant="info">Create</Button>
 				</Form>
 			</Col>
 		</Row>

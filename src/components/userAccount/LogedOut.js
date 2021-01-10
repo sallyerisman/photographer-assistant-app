@@ -1,13 +1,21 @@
-import { Link } from 'react-router-dom'
-import { Col, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { Button, Col, Row } from 'react-bootstrap'
 
 const LogedOut = () => {
+	const navigate = useNavigate()
+
+	const handleClick = () => {
+		navigate('/login')
+	}
+
 	return (		
 		<Row>
-			<Col md={{ span: 8, offset: 2 }} className="page" >
-				<h1>Goodbye, hope to see you soon!</h1>
+			<Col md={{ span: 8, offset: 2 }} className="page-content" >
+				<h1>Goodbye, hope to see you again soon!</h1>
 				
-				<Link to="/login" className="btn btn__login-again">Log in again</Link>
+				<div className="button-wrapper">
+					<Button className="btn button__primary button--left" onClick={handleClick} variant="info">Log in again</Button>
+				</div>
 			</Col>
 		</Row>		
 	)

@@ -30,12 +30,12 @@ const Login = () => {
 
 	return (
 		<Row>
-			<Col md={{ span: 6, offset: 3 }} className="page">
+			<Col md={{ span: 6, offset: 3 }} className="page-content">
 				<h1>Log in</h1>
 
 				{error && <Alert variant="danger">{error}</Alert>}
 
-				<Form onSubmit={handleSubmit} className="form form__login">
+				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">
 						<Form.Label>Email</Form.Label>
 						<Form.Control type="email" ref={emailRef} autoFocus required />
@@ -46,7 +46,13 @@ const Login = () => {
 						<Form.Control type="password" ref={passwordRef} required />
 					</Form.Group>
 
-					<Button disabled={loading} variant="info" type="submit" className="btn btn__log-in">Log in</Button>
+					<Button 
+						disabled={loading} 
+						type="submit" 
+						className="btn button__primary" 
+						variant="info"
+						>Log in
+					</Button>
 				</Form>
 
 				<Link to="/reset-password" className="link text-link">Forgot your password?</Link>

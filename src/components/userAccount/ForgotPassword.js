@@ -30,23 +30,22 @@ const ForgotPassword = () => {
 
 	return (
 		<Row>
-			<Col md={{ span: 6, offset: 3 }} className="page">
+			<Col md={{ span: 6, offset: 3 }} className="page-content">
 				<h1>Forgot your password?</h1>
 
 				{error && <Alert variant="danger">{error}</Alert>}
 				{message && <Alert variant="success">{message}</Alert>}
 
-				<Form onSubmit={handleSubmit} className="form form__reset-password">
+				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">
 						<Form.Label>Enter your email address</Form.Label>
 						<Form.Control type="email" ref={emailRef} autoFocus required />
 					</Form.Group>
 
 					<Button 
-						className="btn btn__reset-password"
+						className="btn button__secondary"
 						disabled={loading} 
 						type="submit"
-						variant="info" 
 						>Reset your password
 					</Button>
 				</Form>

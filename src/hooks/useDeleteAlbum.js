@@ -40,7 +40,7 @@ const useDeleteAlbum = album => {
 					}
 				})
 
-				const intersections = albumImages.filter(img => multipleExists.indexOf(img) === -1);
+				const intersections = albumImages.filter(img => multipleExists.indexOf(img) === -1)
 
 				// Delete album and its content from firestore
 				await db.collection('albums').doc(album.id).delete()

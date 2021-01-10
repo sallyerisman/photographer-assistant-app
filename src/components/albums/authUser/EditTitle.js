@@ -33,7 +33,7 @@ const EditTitle = ({ album }) => {
 			});
 
 			navigate(`/albums/${album.id}`)
-			// window.location.reload()
+			window.location.reload()
 
 		} catch (e) {
 			setError("Something went wrong and the title could not be updated. Please try again.")
@@ -44,16 +44,18 @@ const EditTitle = ({ album }) => {
 		<>
             {error && <Alert variant="danger">{error}</Alert>}
 
+			<h1>Edit title</h1>
+
 			<Form onSubmit={handleSubmit}>
 				<Form.Group id="title">
-					<Form.Label>New album title</Form.Label>
+					<Form.Label>Type in your new album title</Form.Label>
 					<Form.Control type="title" onChange={handleTitleChange} placeholder={album.title} value={newTitle} autoFocus />
 					
-					{album.title && album.title.length < 3 && 
+					{newTitle && newTitle.length < 3 && 
 						<Form.Text className="text__alert">The album title must be at least 3 characters long.</Form.Text>
 					}
 				</Form.Group>
-				<Button  disabled={loading} type="submit">Update</Button>
+				<Button disabled={loading} type="submit" className="btn button__secondary">Update</Button>
 			</Form>
 		</>
 	)

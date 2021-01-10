@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card} from 'react-bootstrap'
+import { Dash } from 'react-bootstrap-icons'
 import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
 
 const AlbumGrid = ({ albums }) => {
@@ -25,12 +26,20 @@ const AlbumGrid = ({ albums }) => {
 		<> 
 			{albums.map(album => (
 				<Card key={album.id}>
-					<Link to={`/albums/${album.id}`}>
+					<Link to={`/albums/${album.id}`} className="link text-link">
 						<Card.Body>
-							<Card.Title>{album.title}</Card.Title>
+							<div className="title-wrapper">
+								<Card.Title>{album.title}</Card.Title>
+								<Button 
+									className="btn button__danger button--small"
+									onClick={() => {handleDeleteAlbum(album)}}
+								>	
+									<Dash className="icon button-icon" />
+									Delete
+								</Button>
+							</div>
 						</Card.Body>
 					</Link>
-					<Button onClick={() => {handleDeleteAlbum(album)}}>Delete album</Button>
 				</Card>
 			))}
 		</>

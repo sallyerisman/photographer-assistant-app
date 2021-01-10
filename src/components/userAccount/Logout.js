@@ -27,18 +27,19 @@ const Logout = () => {
 
 	return (		
 		<Row>
-			<Col md={{ span: 8, offset: 2 }} className="page">
+			<Col md={{ span: 8, offset: 2 }} className="page-content">
 				{error && <Alert variant="danger">{error}</Alert>}
 
 				<h1>Are you sure you want to log out?</h1>
 
-				<Button 
-					className="btn btn__log-out"
-					disabled={loading} 
-					onClick={handleClick} 
-					variant="info"
-					>Yes, please log me out
-				</Button>
+				<div className="button-wrapper">
+					<Button 
+						className="btn button__danger button--left"
+						disabled={loading} 
+						onClick={handleClick} 
+						>Yes, please log me out
+					</Button>
+				</div>
 
 				<div>
 					<Link to="/albums" className="link text-link">

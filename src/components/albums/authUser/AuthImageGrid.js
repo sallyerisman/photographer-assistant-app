@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
+import { Plus } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useAuth } from '../../../contexts/AuthContext'
 import useDeleteImage from '../../../hooks/useDeleteImage'
@@ -80,38 +81,46 @@ const AuthImageGrid = ({ images }) => {
 			{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 			{successMessage && <Alert variant="info">{successMessage}</Alert>}
 
-			<Row>
+			<Row className="image-grid">
 				{images &&
-				images.map((image, index) => (
-					<Col sm={6} md={4} lg={3} key={index}>
-						<Card>
-							<a href={image.url} title="View image in lightbox" data-attribute="SRL">
-								<Card.Img variant="top" src={image.url} title={image.name} />
-							</a>
-							<Card.Body>
-								<Card.Text>
-									{image.name} ({Math.round(image.size/1024)} kb)
-								</Card.Text>
-							</Card.Body>
-
-							{currentUser &&
-								<>
+					images.map((image, index) => (
+						<Col xs={6} lg={4} key={index}>
+							<Card className="card card__photo">
+								{currentUser &&
 									<Checkbox
 										name={image.url}
 										checked={checkedItems[image.url]}
 										onChange={handleChange}
 									/>
-
-									<Button onClick={() => {handleDeleteImage(image)}}>Delete</Button>
-								</>	
-							}
-						</Card>
-					</Col>				
-				))}
-
-				{currentUser && selectedImages && selectedImages.length > 0 &&		
-					<Button onClick={() => handleCreateNewAlbum(selectedImages)}>Create new album</Button>
-				}
+								}
+								<a href={image.url} title="View image in lightbox" data-attribute="SRL">
+									<Card.Img variant="top" src={image.url} title={image.name} />
+								</a>
+								<Card.Body>
+									<Card.Text>
+										{image.name} ({Math.round(image.size/1024)} kb)
+									</Card.Text>
+									{currentUser &&
+										<Button className="btn button__danger button--card button--small" onClick={() => {handleDeleteImage(image)}}>Delete</Button>
+									}
+								</Card.Body>
+							</Card>
+						</Col>				
+					))}
+			</Row>
+			<Row>
+				<Col>
+					{currentUser && selectedImages && selectedImages.length > 0 &&		
+						<Button 
+							className="btn button__primary button--left" 
+							onClick={() => handleCreateNewAlbum(selectedImages)}
+							variant="info" 
+						>
+							<Plus className="icon button-icon" />
+							Create a new album
+						</Button>
+					}
+				</Col>				
 			</Row>
 		</SRLWrapper>
 	)

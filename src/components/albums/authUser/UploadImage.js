@@ -38,37 +38,28 @@ const UploadImages = () => {
 	});
 
 	return (
-		<div {...getRootProps()} 
-			id="upload-image-dropzone-wrapper" 
-			className={`
-				${isDragAccept && `drag-accept`} 
-				${isDragReject && `drag-reject`}
-			`}>
+		<>
+			<div {...getRootProps()} 
+				id="upload-image-dropzone-wrapper" 
+				className={`
+					${isDragAccept && `drag-accept`} 
+					${isDragReject && `drag-reject`}
+				`}>
 
-			<input {...getInputProps()} />
-			
-			{isDragActive
-				? isDragAccept 
-					? <p>Drop to upload</p> 
-					: <p>Upload failed. Accepted file formats are .jpeg and .png</p>
-				: <p>Upload your files here</p>
-			}
+				<input {...getInputProps()} />
+				
+				{isDragActive
+					? isDragAccept 
+						? <p className="dropzone-text">Drop to upload</p> 
+						: <p className="dropzone-text">Upload failed. Accepted file formats are .jpeg and .png</p>
+					: <p className="dropzone-text">Upload your files here</p>
+				}
 
-			{acceptedFiles && (
-				<div className="accepted-files">
-					<ul>
-						{acceptedFiles.map(file => (
-							<li key={file.name}><small>{file.name} ({Math.round(file.size / 1024)} kb)</small></li>
-						))}
-					</ul>
-				</div>
-			)}
-
-			{uploadProgress !== null && (<ProgressBar variant="info" label={`${uploadProgress}%`} now={uploadProgress} />)}
-
-			{errorMessage && (<Alert variant="danger">{errorMessage}</Alert>)}
-			{successMessage && (<Alert variant="success">{successMessage}</Alert>)}
-		</div>
+				{uploadProgress !== null && (<ProgressBar variant="info" label={`${uploadProgress}%`} now={uploadProgress} />)}
+			</div>
+			{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
+			{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
+		</>
 	)
 }
 
