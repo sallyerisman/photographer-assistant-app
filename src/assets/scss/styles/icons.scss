@@ -14,7 +14,6 @@
 	&.button-icon--edit {
 		font-size: 0.8rem;
 	}
-
 }
 
 .icon__arrow-left {
@@ -32,7 +31,7 @@
 }
 
 .icon__like {
-	color: $turqouise;
+	color: $turqouise-dark;
 	font-size: 1.3rem;
 	margin-left: 1rem;
 	cursor: pointer;
@@ -43,7 +42,7 @@
 	height: auto;
 
 	&:hover { 
-		color: $accent-color;
+		color: $turqouise-dark;
 	}
 
 	// Desktop 

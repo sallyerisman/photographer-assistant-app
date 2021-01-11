@@ -2,9 +2,14 @@
 
 /* Links */
 
+.link-wrapper {
+	margin-top: 2rem;
+}
+
 .invite-link-wrapper {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .link {
@@ -12,7 +17,7 @@
 	text-decoration: none;
 
 	&:hover { 
-		color: $turqouise-dark;
+		color: $pink-dark;
 		text-decoration: none; 
 	}
 
@@ -43,6 +48,9 @@
 	}
 }
 
-.link-wrapper {
-	margin-top: 2rem;
+.text-link--edit {
+	font-size: 0.8rem;
+	margin-bottom: 2rem;
+	margin-left: 2rem;
+	cursor: pointer;
 }

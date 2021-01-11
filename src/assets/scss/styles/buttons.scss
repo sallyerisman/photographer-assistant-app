@@ -42,14 +42,14 @@
 .button__danger {
 	color: white;
 	background-color: $button-danger;
-	border: $button-danger-border;
+	border: none;
 
 	&:visited,
 	&:hover,
 	&:focus,
 	&.btn-primary:not(:disabled):not(.disabled):active {
 		background-color: $button-danger-hover;
-		border: $button-danger-border;
+		border: none;
 		box-shadow: $button-danger-box-shadow;
 	}
 
@@ -64,11 +64,6 @@
 	padding: 0.3rem 0.6rem;
 }
 
-.button--edit {
-	margin-bottom: 2rem;
-	margin-left: 2rem;
-}
-
 .swal-button--cancel,
 .swal-button--confirm {
 	font-size: 1rem;
@@ -78,13 +73,13 @@
 
 .swal-button--confirm {
 	background-color: $button-danger;
-	
+
 	&:focus {
 		box-shadow: 0 0 0 0.2rem rgba(165,43,43,.29);
 	}
 }
 
-.swal-button--cancel{
+.swal-button--cancel {
 	&:focus {
 		box-shadow: 0 0 0 0.2rem rgba(116,136,150,.29);
 	}

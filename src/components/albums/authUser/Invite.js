@@ -21,12 +21,12 @@ const Invite = ({ invite }) => {
                 <Alert variant="info">
                     <div className="invite-link-wrapper">
                         {invite}
-                        <Button className="btn button__secondary button--small" onClick={() => handleCopyLink(invite)}>
+                        <Button className="btn button__primary button--small" onClick={() => handleCopyLink(invite)}>
                             Copy
                         </Button>
                     </div>
                 </Alert>	
-                : <Alert variant="info">											
+                : <Alert variant="success">											
                     <div className="invite-link-wrapper">
                         {copySuccess}											
                     </div>

@@ -3,14 +3,14 @@
 /* Dropzone */
 
 #upload-image-dropzone-wrapper {
-	background-color: $pink-light;
-	border: 2px solid $pink;
+	background-color: $turqouise-light;
+	border: 1px solid $turqouise;
 	border-radius: 0.25rem;
 	margin: 1rem 0;
 	padding: 2.5rem;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 
 	&.drag-accept {
 		background-color: rgb(250, 250, 250);
@@ -26,5 +26,6 @@
 
 	.dropzone-text {
 		margin: 0;
+		text-align: center;
 	}
 }

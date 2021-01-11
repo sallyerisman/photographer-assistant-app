@@ -6,6 +6,10 @@
 	margin-top: 1rem;
 }
 
+.alert-info {
+	background-color: $turqouise-light;
+}
+
 .alert__count,
 .alert__upload {
 	display: inline-block;
@@ -13,4 +17,4 @@
 
 .swal-overlay {
 	background-color: rgba(129, 125, 125, 0.4);
-  }
+}

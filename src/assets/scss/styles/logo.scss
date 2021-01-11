@@ -6,15 +6,15 @@
 	display: flex;
 	align-items: center;
 	font-size: 1.3rem;
+	font-weight: 300;
 
 	.logo {
-		color: $accent-color;
-		margin-right: 8px;
+		margin-right: 0.8rem;
 		transform: rotate(350deg);
 	}
 
-	.logo-text {
-		color: $accent-color;
-		font-weight: 400;
+	&:hover {
+		color: black;
+		font-size: 1.5rem;
 	}
 }

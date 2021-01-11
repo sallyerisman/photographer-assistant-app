@@ -36,13 +36,12 @@ const Album = () => {
 						{editTitle 
 							? <EditTitle album={album}/> 
 							: <>
-								<div className="edit-title-wrapper">
-									<h1>{album.title}</h1>
-									<Button variant="light" className="btn button--small button--edit" onClick={handleEditTitle}>	
+								<h1>{album.title}
+									<span className="link text-link text-link--edit" onClick={handleEditTitle}>	
 										<Pen className="icon button-icon button-icon--edit" />
 										Edit title
-									</Button>
-								</div>
+									</span>									
+								</h1>					
 
 								<UploadImage albumId={albumId} />
 

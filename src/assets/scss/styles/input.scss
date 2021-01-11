@@ -17,7 +17,6 @@
     user-select: none;
 }
   
-
 .checkbox-wrapper input {
     position: absolute;
     opacity: 0;
@@ -32,12 +31,12 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
-    border: 0.5px solid $turqouise-darker;
+    background-color: $turqouise-light;
+    border: 0.5px solid $turqouise;
 }
   
 .checkbox-wrapper:hover input ~ .checkmark {
-    background-color: $turqouise-light;
+    background-color: $turqouise;
 }
   
 .container input:checked ~ .checkmark {

@@ -15,7 +15,7 @@ const UploadImages = () => {
 
 	useEffect(() => {
 		if (error) {
-			setErrorMessage("An error occurred and the upload could not be performed.")
+			setErrorMessage("An error occurred and the upload could not be performed")
 		} else if (success) {
 			setSuccessMessage("The upload was successful!")
 			
@@ -38,31 +38,31 @@ const UploadImages = () => {
 	});
 
 	return (
-		<Row>
-			<Col md={{ span: 8 }}>
-				<div {...getRootProps()} 
-					id="upload-image-dropzone-wrapper" 
-					className={`
-						${isDragAccept && `drag-accept`} 
-						${isDragReject && `drag-reject`}
-					`}>
+		<>
+			<div {...getRootProps()} 
+				id="upload-image-dropzone-wrapper" 
+				className={`
+					${isDragAccept && `drag-accept`} 
+					${isDragReject && `drag-reject`}
+				`}>
 
-					<input {...getInputProps()} />
-					
-					{isDragActive
-						? isDragAccept 
-							? <p className="dropzone-text">Drop to upload</p> 
-							: <p className="dropzone-text">Upload failed. Accepted file formats are .jpeg and .png</p>
-						: <p className="dropzone-text">Upload your files here</p>
-					}
+				<input {...getInputProps()} />
+				
+				{isDragActive
+					? isDragAccept 
+						? <p className="dropzone-text">Drop to upload</p> 
+						: <p className="dropzone-text">Upload failed. Accepted file formats are .jpeg and .png</p>
+					: <p className="dropzone-text">Upload your files here</p>
+				}
 
-					{uploadProgress !== null && (<ProgressBar variant="info" label={`${uploadProgress}%`} now={uploadProgress} />)}
-				</div>
+				{uploadProgress !== null && 
+					<ProgressBar className="whereAreYou" variant="info" label={`${uploadProgress}%`} now={uploadProgress}/>
+				}
+			</div>
 
-				{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
-				{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
-			</Col>
-		</Row>
+			{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
+			{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
+		</>
 	)
 }
 

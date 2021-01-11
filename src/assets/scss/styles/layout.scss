@@ -1,9 +1,15 @@
+@import 'styles/colors';
+
 /* Layout */
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	background-color: $soft-grey;
 }
 
 // Layout 
@@ -63,7 +69,3 @@
 	margin-bottom: 2rem;
 }
 
-.edit-title-wrapper {
-	display: flex;
-	justify-content: flex-start;
-}

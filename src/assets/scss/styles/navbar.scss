@@ -1,7 +1,10 @@
+@import 'styles/colors';
+
 /* Navbar */
 
 .navigation {
-	border-bottom: 1px solid #111;
+	background-color: #ffffff;
+	border-bottom: 1px solid $accent-light;
 	padding: 0.8rem 0;
 }
 

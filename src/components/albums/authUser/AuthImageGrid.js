@@ -71,9 +71,19 @@ const AuthImageGrid = ({ images }) => {
 	}
 
 	const handleDeleteImage = (image) => {
-		if (confirm(`Are you sure you want to delete image "${image.name}"?`)) {
-			setDeleteImage(image);
-		}
+		swal({
+			title: "Are you sure?",
+			text: `The action to delete image "${image.name}" cannot be undone`,
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				setDeleteImage(image);
+			} else {
+			  return
+			}
+		});
 	}
 
 	return (
