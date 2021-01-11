@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { Alert, Button, Image, Card, Col, Row } from 'react-bootstrap'
 import { ArrowCounterclockwise, DashCircleFill, PlusCircleFill } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
+import { useRateImageContext } from '../../../contexts/RateImageContext'
 import useApproveImages from '../../../hooks/useApproveImages'
 
 const ImageGrid = ({ images, owner, title }) => {
 	const [approvedImages, setApprovedImages] = useState(null)
-	const [dislikedImages, setDislikedImages] = useState([])
 	const [errorMessage, setErrorMessage] = useState(false)
-	const [likedImages, setLikedImages] = useState([])
 	const [showThumbnails, setShowThumbnails] = useState(false)
 
 	const navigate = useNavigate()
 	const { reviewError, reviewSuccess } = useApproveImages(approvedImages, owner, title)
+	const { dislikedImages, handleDislike, handleLike, likedImages  } = useRateImageContext()
 
 	useEffect(() => {
 		if (reviewError) {
@@ -24,59 +24,6 @@ const ImageGrid = ({ images, owner, title }) => {
 			navigate('/thank-you')
 		} 
 	}, [reviewError, reviewSuccess]);
-	
-	const handleDislike = (image) => {
-		let regretedLiked = likedImages
-
-		if (regretedLiked.includes(image)) {
-			for (let i = 0; i < regretedLiked.length; i++){     
-				regretedLiked[i] === image && regretedLiked.splice(i, 1) 	
-				setDislikedImages(regretedLiked)	
-			}
-		} 
-
-		let imagesToRemove
-		if (dislikedImages.length > 0) {
-			imagesToRemove = [...dislikedImages]
-			
-			if (imagesToRemove.includes(image)) {
-				for (let i = 0; i < imagesToRemove.length; i++){     
-					imagesToRemove[i] === image && imagesToRemove.splice(i, 1) 	
-				}
-			} 
-		} else {
-			imagesToRemove = []
-		}
-
-		imagesToRemove.push(image)
-		setDislikedImages(imagesToRemove);
-	}
-
-	const handleLike = (image) => {
-		let regretedDisliked = dislikedImages
-		if (regretedDisliked.includes(image)) {
-			for (let i = 0; i < regretedDisliked.length; i++){     
-				regretedDisliked[i] === image && regretedDisliked.splice(i, 1) 	
-				setDislikedImages(regretedDisliked)	
-			}
-		} 
-
-		let imagesToSave
-		if (likedImages.length > 0) {
-			imagesToSave = [...likedImages]
-
-			if (imagesToSave.includes(image)) {
-				for (let i = 0; i < imagesToSave.length; i++){     
-					imagesToSave[i] === image && imagesToSave.splice(i, 1) 	
-				}
-			} 
-		} else {
-			imagesToSave = []
-		}
-
-		imagesToSave.push(image)
-		setLikedImages(imagesToSave)
-	}
 
 	const handleReviewSelection = () => {
 		setShowThumbnails(true)

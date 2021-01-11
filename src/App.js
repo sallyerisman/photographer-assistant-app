@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap'
 import './assets/scss/app.scss'
 
 import AuthContextProvider from './contexts/AuthContext'
+import RateImageContextProvider from './contexts/RateImageContext'
 
 import Album from './components/albums/authUser/Album'
 import Albums from './components/albums/authUser/Albums'
@@ -34,9 +35,11 @@ const App = () => {
 								<Home />
 							</Route>
 
-							<Route path="/albums/:albumId/review">
-								<ReviewAlbum />
-							</Route>
+							<RateImageContextProvider>
+								<Route path="/albums/:albumId/review">
+									<ReviewAlbum />
+								</Route>
+							</RateImageContextProvider>
 
 							<AuthRoute path="/albums">
 								<AuthRoute path="/">
