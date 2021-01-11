@@ -1,0 +1,61 @@
+@import 'styles/colors';
+
+/* Cards */
+
+.card-col {
+	margin-bottom: 1rem;
+}
+
+.card {
+	&.card__album {
+		margin-bottom: 1rem;
+
+		.card-body {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			&:hover {
+				background-color: $turqouise-light;
+			}
+		}
+	}
+
+	&.card__photo {
+		height: 100%;
+		padding: 0.5rem;
+		display: flex;
+		flex-direction: column;
+
+		.checkbox {
+			align-self: flex-start;
+			margin-bottom: 0.5rem;
+		}
+
+		.card-body {
+			min-height: 3rem;
+			display: flex;
+			flex-direction: column;
+			padding: 0.8rem 0 0 0;
+			position: relative;
+
+			.card-text {
+				margin-bottom: 3rem;
+			}
+
+			.rate-icon-wrapper {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				margin-top: 3rem;
+			}
+
+			.btn,
+			.rate-icon-wrapper {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, Form } from 'react-bootstrap'
+import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { db } from '../../../firebase'
 
 const EditTitle = ({ album }) => {
@@ -41,23 +41,23 @@ const EditTitle = ({ album }) => {
 	}
 
 	return (
-		<>
-            {error && <Alert variant="danger">{error}</Alert>}
+		<Row>
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+				{error && <Alert variant="danger">{error}</Alert>}
 
-			<h1>Edit title</h1>
-
-			<Form onSubmit={handleSubmit}>
-				<Form.Group id="title">
-					<Form.Label>Type in your new album title</Form.Label>
-					<Form.Control type="title" onChange={handleTitleChange} placeholder={album.title} value={newTitle} autoFocus />
-					
-					{newTitle && newTitle.length < 3 && 
-						<Form.Text className="text__alert">The album title must be at least 3 characters long.</Form.Text>
-					}
-				</Form.Group>
-				<Button disabled={loading} type="submit" className="btn button__secondary">Update</Button>
-			</Form>
-		</>
+				<Form onSubmit={handleSubmit}>
+					<Form.Group id="title">
+						<Form.Label>Type in your new album title</Form.Label>
+						<Form.Control type="title" onChange={handleTitleChange} placeholder={album.title} value={newTitle} autoFocus />
+						
+						{newTitle && newTitle.length < 3 && 
+							<Form.Text className="text__alert">The album title must be at least 3 characters long.</Form.Text>
+						}
+					</Form.Group>
+					<Button disabled={loading} type="submit" className="btn button__secondary">Update</Button>
+				</Form>
+			</Col>
+		</Row>
 	)
 }
 

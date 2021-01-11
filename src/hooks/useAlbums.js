@@ -23,6 +23,16 @@ const useAlbums = () => {
 					})
 				})
 
+			// Sort the albums by title
+			snapshotAlbums.sort(function(a, b){
+				let titleA = a.title.toLowerCase(), titleB = b.title.toLowerCase()
+				if (titleA < titleB) 
+					return -1 
+				if (titleA > titleB)
+					return 1
+				return 0 
+			})
+
 			setAlbums(snapshotAlbums)
 			setLoading(false)
 		})

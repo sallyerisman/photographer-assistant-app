@@ -35,7 +35,7 @@ const AuthImageGrid = ({ images }) => {
 		if (deleteError) {
 			setErrorMessage("An error occurred and the image could not be deleted.")
 		} else if (deleteSuccess) {
-			setSuccessMessage("The image was successfully deleted.")
+			setSuccessMessage("The image was successfully deleted")
 		} 
 	}, [deleteError, deleteSuccess]);
 
@@ -79,12 +79,12 @@ const AuthImageGrid = ({ images }) => {
 	return (
 		<SRLWrapper>
 			{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-			{successMessage && <Alert variant="info">{successMessage}</Alert>}
+			{successMessage && <Alert variant="success">{successMessage}</Alert>}
 
 			<Row className="image-grid">
 				{images &&
 					images.map((image, index) => (
-						<Col xs={6} lg={4} key={index}>
+						<Col xs={6} md={4} key={index} className="card-col">
 							<Card className="card card__photo">
 								{currentUser &&
 									<Checkbox
@@ -101,7 +101,9 @@ const AuthImageGrid = ({ images }) => {
 										{image.name} ({Math.round(image.size/1024)} kb)
 									</Card.Text>
 									{currentUser &&
-										<Button className="btn button__danger button--card button--small" onClick={() => {handleDeleteImage(image)}}>Delete</Button>
+										<div>
+											<Button className="btn button__danger button--right button--small" onClick={() => {handleDeleteImage(image)}}>Delete</Button>
+										</div>
 									}
 								</Card.Body>
 							</Card>
@@ -112,9 +114,8 @@ const AuthImageGrid = ({ images }) => {
 				<Col>
 					{currentUser && selectedImages && selectedImages.length > 0 &&		
 						<Button 
-							className="btn button__primary button--left" 
+							className="btn button__primary" 
 							onClick={() => handleCreateNewAlbum(selectedImages)}
-							variant="info" 
 						>
 							<Plus className="icon button-icon" />
 							Create a new album

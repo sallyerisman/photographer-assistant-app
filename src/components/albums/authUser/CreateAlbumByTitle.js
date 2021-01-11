@@ -50,8 +50,8 @@ const CreateAlbumByTitle = () => {
 
 	return (
 		<Row>
-			<Col>
-				<h2>Create a new album</h2>
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+				<h1>Create a new album</h1>
 
 				{error && <Alert variant="danger">{error}</Alert>}
 
@@ -64,7 +64,7 @@ const CreateAlbumByTitle = () => {
 						}
 
 					</Form.Group>
-					<Button disabled={loading} className="btn btn__primary" type="submit" variant="info">Create</Button>
+					<Button disabled={loading} className="btn button__primary" type="submit">Create</Button>
 				</Form>
 			</Col>
 		</Row>

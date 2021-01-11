@@ -1,0 +1,69 @@
+/* Layout */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+// Layout 
+.container {
+	max-width: 360px;
+
+	// Tablet portrait
+	@media only screen and (min-width: 600px) {
+		max-width: 520px;
+	}
+
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		max-width: 680px;
+	}
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		max-width: 900px;
+	}
+}
+
+.container__page {
+	padding-top: 2rem;
+	
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		padding-top: 3rem;
+	}
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		padding-top: 3.5rem;
+	}
+}
+
+.album-grid, 
+.image-grid {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.page__not-found {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.thumbnails {
+	margin: 1.5rem 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.thumbnail-grid {
+	margin-bottom: 2rem;
+}
+
+.edit-title-wrapper {
+	display: flex;
+	align-items: center;
+}

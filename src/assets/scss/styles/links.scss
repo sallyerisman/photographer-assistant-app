@@ -1,0 +1,48 @@
+@import 'styles/colors';
+
+/* Links */
+
+.invite-link-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.link {
+	color: black;
+	text-decoration: none;
+
+	&:hover { 
+		color: $turqouise-dark;
+		text-decoration: none; 
+	}
+
+	&.login {
+		margin-left: 1.5rem;
+
+		// Tablet
+		@media only screen and (min-width: 768px) {
+			margin-left: 3rem;
+		}
+	}
+
+	&.navlink {
+		font-weight: 300;
+
+		&:hover {
+			font-weight: 400;	
+		}
+	}
+
+
+	&.text-link {
+		font-weight: 400;
+	
+		&:hover { 
+			text-decoration: none; 	
+		}
+	}
+}
+
+.link-wrapper {
+	margin-top: 2rem;
+}

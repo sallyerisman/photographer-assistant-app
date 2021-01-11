@@ -27,14 +27,14 @@ const Logout = () => {
 
 	return (		
 		<Row>
-			<Col md={{ span: 8, offset: 2 }} className="page-content">
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				{error && <Alert variant="danger">{error}</Alert>}
 
 				<h1>Are you sure you want to log out?</h1>
 
-				<div className="button-wrapper">
+				<div>
 					<Button 
-						className="btn button__danger button--left"
+						className="btn button__danger"
 						disabled={loading} 
 						onClick={handleClick} 
 						>Yes, please log me out

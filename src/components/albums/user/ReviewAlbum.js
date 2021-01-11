@@ -10,10 +10,10 @@ const ReviewAlbum = () => {
 	return (
 		<>	
 			{loading 
-				? <PuffLoader className="loading-spinner"/>
+				? <div className="spinner-wrapper"><PuffLoader color="#117a8b"/></div>
 				: album && 
 					<>
-						<h2>{album.title}</h2>
+						<h1>{album.title}</h1>
 						<ImageGrid images={album.images} owner={album.owner} title={album.title} />
 					</>
 			}

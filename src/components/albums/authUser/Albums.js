@@ -13,23 +13,19 @@ const Albums = () => {
 
 	return (
 		<Row>
-			<Col md={{ span: 8, offset: 2 }} className="page-content">
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>My albums</h1>
 
 				{loading
-					? <PuffLoader className="loading-spinner"/>
+					? <div className="spinner-wrapper"><PuffLoader color="#117a8b"/></div>
 					: albums.length > 0
 						? <AlbumGrid albums={albums}/>
 						: <div>You currently do not have any albums.</div>
 				}
 
 				{currentUser &&
-					<div className="button-wrapper">
-						<Button 
-							className="btn button__primary button--left" 
-							onClick={() => {navigate('/albums/create')}}
-							variant="info" 
-						>
+					<div>
+						<Button className="btn button__primary"	onClick={() => {navigate('/albums/create')}}>
 							<Plus className="icon button-icon" />
 							New album
 						</Button>

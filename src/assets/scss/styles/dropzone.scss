@@ -1,0 +1,30 @@
+@import 'styles/colors';
+
+/* Dropzone */
+
+#upload-image-dropzone-wrapper {
+	background-color: $pink-light;
+	border: 2px solid $pink;
+	border-radius: 0.25rem;
+	margin: 1rem 0;
+	padding: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&.drag-accept {
+		background-color: rgb(250, 250, 250);
+		border-color: green;
+		color: #155724;
+	}
+
+	&.drag-reject {
+		background-color: rgb(250, 250, 250);
+		border-color: red;
+		color: #721c24;
+	}
+
+	.dropzone-text {
+		margin: 0;
+	}
+}

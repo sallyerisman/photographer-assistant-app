@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
 	return (
 		<Row>
-			<Col md={{ span: 6, offset: 3 }} className="page-content">
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Forgot your password?</h1>
 
 				{error && <Alert variant="danger">{error}</Alert>}

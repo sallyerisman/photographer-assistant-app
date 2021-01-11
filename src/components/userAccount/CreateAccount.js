@@ -29,14 +29,14 @@ const CreateAccount = () => {
 			await createAccount(emailRef.current.value, passwordRef.current.value)
 			navigate('/login')
 		} catch (e) {
-			setError("Was not able to create a new account. Please try again.")
+			setError("We were not able to create the account. Are you sure you don't already have one with the same email address?")
 			setLoading(false)
 		}
 	}
 
 	return (
 		<Row>
-			<Col md={{ span: 6, offset: 3 }} className="page-content">
+			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Create a new account</h1>
 
 				{error && (<Alert variant="danger">{error}</Alert>)}
@@ -61,7 +61,6 @@ const CreateAccount = () => {
 						disabled={loading} 
 						className="btn button__primary" 
 						type="submit"
-						variant="info"
 						>Create account
 					</Button>
 				</Form>

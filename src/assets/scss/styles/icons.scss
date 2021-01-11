@@ -1,0 +1,85 @@
+@import 'styles/colors';
+
+/* Icons */
+
+.button-icon {
+	font-size: 1.5rem;
+	margin-right: 0.3rem;
+
+	&.button-icon--small {
+		font-size: 1rem;
+		margin-right: 0.2rem;
+	}
+
+	&.button-icon--edit {
+		font-size: 0.8rem;
+	}
+
+}
+
+.icon__arrow-left {
+	margin-right: 0.5rem;
+}
+
+.icon__arrow-right {
+	margin-left: 0.5rem;
+}
+
+.icon__dislike {
+	color: $red;
+	font-size: 1.3rem;
+	cursor: pointer;
+}
+
+.icon__like {
+	color: $turqouise;
+	font-size: 1.3rem;
+	margin-left: 1rem;
+	cursor: pointer;
+}
+
+.icon__login {
+	width: 120%;
+	height: auto;
+
+	&:hover { 
+		color: $accent-color;
+	}
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		width: 130%;
+		height: auto;	
+	}
+}
+
+.icon__not-found {
+	color: $orange;
+	font-size: 3rem;
+	margin-top: 3rem;
+	margin-bottom: 2rem;
+
+	// Desktop 
+	@media only screen and (min-width: 992px) {
+		font-size: 4rem;
+	}
+}
+
+.icon__undo {
+	color: $turqouise-dark;
+	background-color: white;
+	border-radius: 100%;
+	padding: 0.2rem;
+	font-size: 1.5rem;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	&:hover {
+		font-size: 1.6rem;
+	}
+}
+
+.icon.selected {
+	font-size: 1.8rem;
+}

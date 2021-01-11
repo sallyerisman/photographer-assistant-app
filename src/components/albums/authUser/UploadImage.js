@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Alert from 'react-bootstrap/Alert'
+import { Alert, Col, Row } from 'react-bootstrap'
 import ProgressBar from 'react-bootstrap/esm/ProgressBar'
 import { useDropzone } from 'react-dropzone'
 import useUploadImages from '../../../hooks/useUploadImages'
@@ -32,34 +32,37 @@ const UploadImages = () => {
 		setUploadImages(acceptedFiles);
 	}, []);
 
-	const { acceptedFiles, getInputProps, getRootProps, isDragAccept, isDragActive, isDragReject } = useDropzone({
+	const { getInputProps, getRootProps, isDragAccept, isDragActive, isDragReject } = useDropzone({
 		accept: 'image/jpeg, image/png',
 		onDrop
 	});
 
 	return (
-		<>
-			<div {...getRootProps()} 
-				id="upload-image-dropzone-wrapper" 
-				className={`
-					${isDragAccept && `drag-accept`} 
-					${isDragReject && `drag-reject`}
-				`}>
+		<Row>
+			<Col md={{ span: 8 }}>
+				<div {...getRootProps()} 
+					id="upload-image-dropzone-wrapper" 
+					className={`
+						${isDragAccept && `drag-accept`} 
+						${isDragReject && `drag-reject`}
+					`}>
 
-				<input {...getInputProps()} />
-				
-				{isDragActive
-					? isDragAccept 
-						? <p className="dropzone-text">Drop to upload</p> 
-						: <p className="dropzone-text">Upload failed. Accepted file formats are .jpeg and .png</p>
-					: <p className="dropzone-text">Upload your files here</p>
-				}
+					<input {...getInputProps()} />
+					
+					{isDragActive
+						? isDragAccept 
+							? <p className="dropzone-text">Drop to upload</p> 
+							: <p className="dropzone-text">Upload failed. Accepted file formats are .jpeg and .png</p>
+						: <p className="dropzone-text">Upload your files here</p>
+					}
 
-				{uploadProgress !== null && (<ProgressBar variant="info" label={`${uploadProgress}%`} now={uploadProgress} />)}
-			</div>
-			{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
-			{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
-		</>
+					{uploadProgress !== null && (<ProgressBar variant="info" label={`${uploadProgress}%`} now={uploadProgress} />)}
+				</div>
+
+				{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
+				{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
+			</Col>
+		</Row>
 	)
 }
 

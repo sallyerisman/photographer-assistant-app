@@ -49,7 +49,7 @@ const AuthContextProvider = (props) => {
 
 	return (
 		<AuthContext.Provider value={contextValues}>
-			{loading && <PuffLoader className="loading-spinner"/>}
+			{loading && <div className="spinner-wrapper"><PuffLoader color="#117a8b"/></div>}
 			{!loading && props.children}
 		</AuthContext.Provider>
 	)

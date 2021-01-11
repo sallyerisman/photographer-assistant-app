@@ -1,0 +1,32 @@
+/* Main app colors */
+
+$accent-color: #2f4f4f;
+$orange: #D9653B;
+$orange-dark: #cc5d34;
+$orange-darker: #c55026;
+$pink: #F2BFB3;
+$pink-light: #f5e7e4;
+$red: #BF0404;
+$red-dark: #a10606;
+$red-darker: #8b0000;
+$turqouise-light: #eff7f8;
+$turqouise: #17a2b8;
+$turqouise-dark: #138496;
+$turqouise-darker: #117a8b;
+
+
+// Button colors
+$button-primary: $turqouise;
+$button-primary-hover: $turqouise-dark;
+$button-primary-border: $turqouise-darker;
+$button-primary-box-shadow: 0 0 0 .2rem rgba(58,176,195,.5);
+
+$button-secondary: $orange;
+$button-secondary-hover: $orange-dark;
+$button-secondary-border: $orange-darker;
+$button-secondary-box-shadow: 0 0 0 .2rem rgb(197, 80, 38);
+
+$button-danger: $red;
+$button-danger-hover: $red-dark;
+$button-danger-border: $red-darker;
+$button-danger-box-shadow: 0 0 0 .2rem rgb(139, 0, 0);

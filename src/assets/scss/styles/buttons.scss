@@ -1,0 +1,70 @@
+@import 'styles/colors';
+
+/* Buttons */
+
+.btn {
+	margin: 0.8rem 0 1rem 0;
+	padding: 0.5rem 0.8rem;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.button__primary {
+	color: white;
+	background-color: $button-primary;
+	border: $button-primary-border;
+
+	&:visited,
+	&:hover,
+	&:focus,
+	&.btn-primary:not(:disabled):not(.disabled):active {
+		background-color: $button-primary-hover;
+		border: $button-primary-border;
+		box-shadow: $button-primary-box-shadow;
+	}
+}
+
+.button__secondary {
+	color: white;
+	background-color: $button-secondary;
+	border: $button-secondary-border;
+
+	&:visited,
+	&:hover,
+	&:focus,
+	&.btn-primary:not(:disabled):not(.disabled):active {
+		background-color: $button-secondary-hover;
+		border: $button-secondary-border;
+		box-shadow: $button-secondary-box-shadow;
+	}
+}
+
+.button__danger {
+	color: white;
+	background-color: $button-danger;
+	border: $button-danger-border;
+
+	&:visited,
+	&:hover,
+	&:focus,
+	&.btn-primary:not(:disabled):not(.disabled):active {
+		background-color: $button-danger-hover;
+		border: $button-danger-border;
+		box-shadow: $button-danger-box-shadow;
+	}
+
+	&.button__delete {
+		margin-left: 1rem;
+	}
+}
+
+.button--small {
+	font-size: 0.8rem;
+	margin: 0;
+	padding: 0.3rem 0.6rem;
+}
+
+.button--edit {
+	margin-bottom: 2rem;
+	margin-left: 2rem;
+}
