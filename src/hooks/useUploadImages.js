@@ -71,7 +71,7 @@ const useUploadImages = (images, albumId = null) => {
 			});	
 		} else {
 			(async () => {
-				const title = `New album ${moment().format('LLL')}` 
+				const title = `New album ${moment().format("MMM Do YYYY")}` 
 
 				try {
 					await db.collection('albums').add({

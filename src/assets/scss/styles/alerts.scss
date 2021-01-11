@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 /* Alerts */
 
 .alert {
@@ -8,3 +10,7 @@
 .alert__upload {
 	display: inline-block;
 }
+
+.swal-overlay {
+	background-color: rgba(129, 125, 125, 0.4);
+  }

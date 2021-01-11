@@ -14,7 +14,7 @@ const useApproveImages = (images, owner, title) => {
 		}
 
 		(async () => {
-			const reviewTitle = `${title} - Reviewed ${moment().format('LLL')}` 
+			const reviewTitle = `${title} - Reviewed ${moment().format("MMM Do YYYY")}` 
 
 			try {
 				// Generate new album based on selection

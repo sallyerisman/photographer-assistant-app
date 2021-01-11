@@ -38,7 +38,7 @@ const Album = () => {
 							: <>
 								<div className="edit-title-wrapper">
 									<h1>{album.title}</h1>
-									<Button className="btn button__secondary button--small button--edit" onClick={handleEditTitle}>	
+									<Button variant="light" className="btn button--small button--edit" onClick={handleEditTitle}>	
 										<Pen className="icon button-icon button-icon--edit" />
 										Edit title
 									</Button>

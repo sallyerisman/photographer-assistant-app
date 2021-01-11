@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card, Col, Row} from 'react-bootstrap'
 import { Dash } from 'react-bootstrap-icons'
+import swal from '@sweetalert/with-react'
 import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
 
 const AlbumGrid = ({ albums }) => {
@@ -17,9 +18,19 @@ const AlbumGrid = ({ albums }) => {
 	}, [deleteError, deleteSuccess]);
 
 	const handleDeleteAlbum = (album) => {
-		if (confirm(`Are you sure you want to delete album "${album.title}"?`)) {
-			setDeleteAlbum(album);
-		}
+		swal({
+			title: "Are you sure?",
+			text: `The action to delete album "${album.title}" cannot be undone`,
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		}).then((willDelete) => {
+			if (willDelete) {
+				setDeleteAlbum(album);
+			} else {
+			  return
+			}
+		});
 	}
 
 	return (
