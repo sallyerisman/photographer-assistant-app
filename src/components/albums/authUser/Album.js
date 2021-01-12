@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Breadcrumb, Button } from 'react-bootstrap'
 import { Pen } from 'react-bootstrap-icons'
 import PuffLoader from 'react-spinners/PuffLoader'
 import { useAuth } from '../../../contexts/AuthContext'
@@ -33,6 +33,11 @@ const Album = () => {
 				? <div className="loading-spinner"><PuffLoader color="#117a8b"/></div>
 				: album && currentUser &&
 					<>
+						<Breadcrumb>
+							<Breadcrumb.Item className="link breadcrumb-link" href="/albums">Albums</Breadcrumb.Item>
+							<Breadcrumb.Item active>{album.title}</Breadcrumb.Item>
+						</Breadcrumb>
+
 						{editTitle 
 							? <EditTitle album={album}/> 
 							: <>

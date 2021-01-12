@@ -35,6 +35,15 @@
 		font-family: $font-family-headings;
 		text-transform: uppercase;
 	}
+
+	&.breadcrumb-link > a {
+		color: black;
+		
+		&:hover { 
+			color: $turquoise-darker;
+			text-decoration: none; 
+		}
+    }
 }
 
 .text-link {

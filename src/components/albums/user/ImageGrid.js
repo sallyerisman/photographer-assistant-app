@@ -16,9 +16,10 @@ const ImageGrid = ({ images, owner, title }) => {
 
 	return (
 		<SRLWrapper>
-			{images && likedImages.length > 0 || dislikedImages.length > 0
-				? <AlertEl status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/>
-				: <p className="info-ingress">Please choose which images you want to keep and which to discard</p>
+			<p className="info-ingress">Please choose which images you want to keep and which to discard</p>
+
+			{images && likedImages.length > 0 || dislikedImages.length > 0 &&
+				<AlertEl status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
 			}
 
 			{!showThumbnails

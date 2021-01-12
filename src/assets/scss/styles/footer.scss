@@ -1,0 +1,19 @@
+@import 'styles/colors';
+
+/* Footer */
+
+.footer {
+	position: absolute;
+    bottom: 0;
+	height: 100px;
+	background-color: #ffffff;
+	width: 100%;
+	border-top: 1px solid $accent-light;
+	padding: 2rem 0;
+}
+
+.footer-content-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

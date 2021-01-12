@@ -11,6 +11,7 @@ import Albums from './components/albums/authUser/Albums'
 import AuthRoute from './components/AuthRoute'
 import CreateAccount from './components/userAccount/CreateAccount'
 import CreateAlbumByTitle from './components/albums/authUser/CreateAlbumByTitle'
+import Footer from './components/Footer'
 import ForgotPassword from './components/userAccount/ForgotPassword'
 import Home from './components/Home'
 import LogedOut from './components/userAccount/LogedOut'
@@ -25,9 +26,8 @@ const App = () => {
 	return (
 		<Router>
 			<AuthContextProvider>
+				<Navigation />
 				<SimpleReactLightbox>
-					<Navigation />
-
 					<Container className="container__page">
 						<Routes>
 
@@ -85,6 +85,7 @@ const App = () => {
 					</Container>
 				</SimpleReactLightbox>
 			</AuthContextProvider>
+			<Footer />
 		</Router>
 	)
 }

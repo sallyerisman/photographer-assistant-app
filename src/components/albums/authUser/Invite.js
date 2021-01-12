@@ -19,7 +19,7 @@ const Invite = ({ invite }) => {
         <>
             {!copySuccess
                 ?  
-                <Alert>
+                <Alert variant="info">
                     <div className="invite-link-wrapper">
                         {invite}
                         <Button className="btn button__primary button--small" onClick={() => handleCopyLink(invite)}>
@@ -27,7 +27,7 @@ const Invite = ({ invite }) => {
                         </Button>
                     </div>
                 </Alert>	
-                : <AlertEl status="danger" message={copySuccess}/>	
+                : <AlertEl status="success" message={copySuccess}/>	
             }
         </>			
     );
