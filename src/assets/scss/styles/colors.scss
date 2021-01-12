@@ -2,35 +2,45 @@
 
 // Colors
 $accent-dark: #20303ce6;
-$accent-light: #e3e8ed;
-$grey-light: #EFEFEF;
-$pink-light: #F8DFDB;
-$pink: #D8A09F;
-$pink-dark: #724140;
+$accent-light: #EFEFEF;
+$grey-soft: #F8F8F8;
+
+$red-light: rgb(216, 140, 137);
 $red: #E64942;
 $red-dark: #ac3530;
 $red-darker: #612B29;
-$soft-grey: #F8F8F8;
-$turqouise-light: #eff7f8;
-$turqouise: #bee5eb;;
-$turqouise-dark: #4a7070;
-$turqouise-darker: #3F575E;
 
+$taupe-light: #e3d5ce;
+$taupe: #a89b95;
+$taupe-dark: #746862;
+
+$turquoise-light: #eff7f8;
+$turquoise: #bee5eb;;
+$turquoise-dark: #4a7070;
+$turquoise-darker: #3F575E;
+
+$yellow-light: #ffeeca;
+$yellow: #E1BA69;
 
 // Button colors
-$button-primary: $turqouise-darker;
-$button-primary-hover: $turqouise-dark;
-$button-primary-border: $turqouise-dark;
-$button-primary-box-shadow: 0 0 0 .2rem rgb(189, 232, 238);
+$button-primary: $turquoise-darker;
+$button-primary-hover: $turquoise-dark;
+$button-primary-border: $turquoise-dark;
+$button-primary-box-shadow: 0 0 0 .2rem rgb(189, 232, 238); // turquoise
 
-$button-secondary: $pink-dark;
-$button-secondary-hover: $pink;
-$button-secondary-border: $pink;
-$button-secondary-box-shadow: 0 0 0 .2rem rgb(248, 223, 219);
+$button-secondary: $taupe-dark;
+$button-secondary-hover: $taupe;
+$button-secondary-border: $taupe;
+$button-secondary-box-shadow: 0 0 0 .2rem rgb(227, 213, 206); // taupe-light
 
 $button-danger: $red-dark;
 $button-danger-hover: $red;
 $button-danger-border: $red;
-$button-danger-box-shadow: 0 0 0 .2rem rgb(216, 140, 137);;
+$button-danger-box-shadow: 0 0 0 .2rem rgb(216, 140, 137); // red-light
+
+$button-warning: $yellow;
+$button-warnin-hover: $yellow;
+$button-secondary-border: $yellow;
+$button-secondary-box-shadow: 0 0 0 .2rem rgb(255, 238, 202); // yellow-light
 
 

@@ -68,7 +68,7 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 					</>
 				}	
 			
-				<div>
+				<div className="button-wrapper">
 					<Button className="btn button__primary" onClick={() => handleFinalizeSelection(likedImages)}>Finalize your selection</Button>
 				</div>
 			</>				

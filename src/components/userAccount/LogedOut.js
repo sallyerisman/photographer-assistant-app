@@ -10,8 +10,9 @@ const LogedOut = () => {
 
 	return (		
 		<Row>
-			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-				<h1 className="heading__good-bye">Goodbye, hope to see you again soon!</h1>
+			<Col className="page__goodbye">
+				<h1>Goodbye!</h1>
+				<p>Hope to see you again soon!</p>
 				
 				<div>
 					<Button className="btn button__primary" onClick={handleClick}>Log in again</Button>

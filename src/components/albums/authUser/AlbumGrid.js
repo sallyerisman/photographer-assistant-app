@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Card, Col, Row} from 'react-bootstrap'
-import { Dash } from 'react-bootstrap-icons'
+import { Card, Col, Row} from 'react-bootstrap'
+import { DashCircleFill } from 'react-bootstrap-icons'
 import swal from '@sweetalert/with-react'
 import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
 
@@ -39,13 +39,10 @@ const AlbumGrid = ({ albums }) => {
 				{albums.map(album => (
 					<Card key={album.id} className="card__album">
 						<Card.Body>
-							<Link to={`/albums/${album.id}`} className="link text-link">
+							<Link to={`/albums/${album.id}`} className="link">
 								<Card.Title>{album.title}</Card.Title>
 							</Link>
-							<Button	className="btn button__danger button--small button__delete" onClick={() => {handleDeleteAlbum(album)}}>	
-								<Dash className="icon button-icon button-icon--small" />
-								Delete
-							</Button>
+							<DashCircleFill	className="icon icon__delete-album" onClick={() => {handleDeleteAlbum(album)}} />	
 						</Card.Body>
 					</Card>
 				))}

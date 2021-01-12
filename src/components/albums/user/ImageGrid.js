@@ -43,7 +43,9 @@ const ImageGrid = ({ images, owner, title }) => {
 					<Row>
 						<Col>
 							{dislikedImages.length + likedImages.length === images.length &&		
-								<Button className="btn button__primary" onClick={handleReviewSelection} variant="info">Review selection</Button>
+								<div className="button-wrapper">
+									<Button className="btn button__secondary" onClick={handleReviewSelection}>Review selection</Button>													
+								</div>
 							}
 						</Col>
 					</Row>

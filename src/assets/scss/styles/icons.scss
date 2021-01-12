@@ -24,6 +24,16 @@
 	margin-left: 0.5rem;
 }
 
+.icon__delete-album {
+	color: $red-darker;
+	font-size: 1.5rem;
+	cursor: pointer;
+
+	&:hover {
+		color: $red-dark;
+	}
+}
+
 .icon__dislike {
 	color: $red;
 	font-size: 1.3rem;
@@ -31,7 +41,7 @@
 }
 
 .icon__like {
-	color: $turqouise-dark;
+	color: $turquoise-dark;
 	font-size: 1.3rem;
 	margin-left: 1rem;
 	cursor: pointer;
@@ -42,7 +52,7 @@
 	height: auto;
 
 	&:hover { 
-		color: $turqouise-dark;
+		color: $turquoise-dark;
 	}
 
 	// Desktop 
@@ -53,7 +63,7 @@
 }
 
 .icon__not-found {
-	color: $orange;
+	color: $yellow;
 	font-size: 3rem;
 	margin-top: 3rem;
 	margin-bottom: 2rem;
@@ -65,7 +75,7 @@
 }
 
 .icon__undo {
-	color: $turqouise-dark;
+	color: $turquoise-dark;
 	background-color: white;
 	border-radius: 100%;
 	padding: 0.2rem;

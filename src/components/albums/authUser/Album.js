@@ -52,7 +52,7 @@ const Album = () => {
 								<AuthImageGrid images={album.images}/>
 
 								{album.images.length > 0 &&
-									<div>
+									<div className="button-wrapper">
 										<Button 
 											className="btn button__secondary"
 											disabled={loading} 
