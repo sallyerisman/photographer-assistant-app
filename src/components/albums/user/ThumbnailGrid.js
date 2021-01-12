@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, Image, Col, Row } from 'react-bootstrap'
+import { Button, Image, Col, Row } from 'react-bootstrap'
 import { ArrowCounterclockwise } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRateImageContext } from '../../../contexts/RateImageContext'

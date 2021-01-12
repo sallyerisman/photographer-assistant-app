@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
+import { Button, Card, Col, Row } from 'react-bootstrap'
 import { DashCircleFill, PlusCircleFill } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRateImageContext } from '../../../contexts/RateImageContext'

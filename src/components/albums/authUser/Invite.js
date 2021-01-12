@@ -22,7 +22,7 @@ const Invite = ({ invite }) => {
                 <Alert variant="info">
                     <div className="invite-link-wrapper">
                         {invite}
-                        <Button className="btn button__primary button--small" onClick={() => handleCopyLink(invite)}>
+                        <Button className="btn button__primary button--small button__copy" onClick={() => handleCopyLink(invite)}>
                             Copy
                         </Button>
                     </div>

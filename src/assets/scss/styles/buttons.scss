@@ -77,6 +77,10 @@
 	}
 }
 
+.button__copy.button--small {
+	margin-left: 1rem;
+}
+
 
 .button--small {
 	font-size: 0.8rem;
@@ -84,26 +88,10 @@
 	padding: 0.3rem 0.6rem;
 }
 
-.swal-button--cancel,
-.swal-button--confirm {
-	font-size: 1rem;
-	padding: 0.375rem 0.75rem;
-	border-radius: 0.25rem;
-}
 
-.swal-button--confirm {
-	background-color: $button-danger;
 
-	&:focus {
-		box-shadow: 0 0 0 0.2rem rgba(165,43,43,.29);
-	}
-}
 
-.swal-button--cancel {
-	&:focus {
-		box-shadow: 0 0 0 0.2rem rgba(116,136,150,.29);
-	}
-}
+
 
 
 

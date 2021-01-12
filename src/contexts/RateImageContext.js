@@ -37,7 +37,6 @@ const RateImageContextProvider = (props) => {
 		setDislikedImages(imagesToRemove)
 
 		return dislikedImages
-
 	}
 
 	const handleLike = (image) => {
@@ -67,9 +66,9 @@ const RateImageContextProvider = (props) => {
 	}
 
 	const contextValues = {
+		dislikedImages,
 		handleDislike,
 		handleLike,
-		dislikedImages,
 		likedImages
 	}
 

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { db, storage } from '../firebase'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -14,18 +13,19 @@ const useDeleteAlbum = album => {
 			return;
 		}
 
+		let isCancelled = false;
+
 		(async () => {
 			let albumImages = album.images.map(image => image.path)
 
 			try {
 				// Get all albums owned by current user		
-				let albumsRef = db.collection('albums').where('owner', '==', currentUser.uid)
-				let allAlbums = await albumsRef.get()
+				let albumsRef = await db.collection('albums').where('owner', '==', currentUser.uid).get()
 				
 				// Check if the album images also exist in other albums
 				let multipleExists = []
 				albumImages.forEach(image => {				
-					for(const doc of allAlbums.docs){
+					for(const doc of albumsRef.docs){
 						if (doc.id === album.id) {
 							continue
 						} else {
@@ -50,12 +50,17 @@ const useDeleteAlbum = album => {
 					await storage.ref(img).delete();
 				})
 				
-				setDeleteSuccess(true)
+				setDeleteSuccess(true);
 			} catch (err) {
 				setDeleteError(true)
 				setDeleteSuccess(false)
 			}
 		})();
+
+		return () => {
+			isCancelled = true;
+		};
+
 	}, [album]);
 	return { deleteError, deleteSuccess }
 }

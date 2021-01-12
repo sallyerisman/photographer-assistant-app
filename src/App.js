@@ -30,7 +30,6 @@ const App = () => {
 				<SimpleReactLightbox>
 					<Container className="container__page">
 						<Routes>
-
 							<Route path="/">
 								<Home />
 							</Route>
