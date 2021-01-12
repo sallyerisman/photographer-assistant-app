@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { db } from '../../../firebase'
+import AlertEl from '../../../helpers/Alert'
 
 const EditTitle = ({ album }) => {
 	const [error, setError] = useState(false)
@@ -43,7 +44,7 @@ const EditTitle = ({ album }) => {
 	return (
 		<Row>
 			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-				{error && <Alert variant="danger">{error}</Alert>}
+				{error && <AlertEl status="danger" message={error}/>}
 
 				<Form onSubmit={handleSubmit}>
 					<Form.Group id="title">

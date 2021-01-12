@@ -5,6 +5,7 @@ import { ArrowCounterclockwise } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRateImageContext } from '../../../contexts/RateImageContext'
 import useApproveImages from '../../../hooks/useApproveImages'
+import AlertEl from '../../../helpers/Alert'
 
 const ThumbnailGrid = ({ images, owner, title }) => {
 	const [approvedImages, setApprovedImages] = useState(null)
@@ -30,9 +31,10 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 
 	return (
 		<SRLWrapper>
-			{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+			{errorMessage && <AlertEl status="danger" message={errorMessage}/>}
+
 			{images && likedImages.length > 0 || dislikedImages.length > 0 &&
-				<Alert variant="info" className="alert__count">{`You have approved ${likedImages.length}/${images.length} images`}</Alert>
+				<AlertEl status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/>
 			}
 
 			<>

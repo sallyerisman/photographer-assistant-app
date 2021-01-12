@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { ArrowLeft } from 'react-bootstrap-icons'
 import { useAuth } from '../../contexts/AuthContext'
+import AlertEl from '../../helpers/Alert'
 
 const ForgotPassword = () => {
 	const [error, setError] = useState(null)
@@ -33,8 +34,8 @@ const ForgotPassword = () => {
 			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Forgot your password?</h1>
 
-				{error && <Alert variant="danger">{error}</Alert>}
-				{message && <Alert variant="success">{message}</Alert>}
+				{error && <AlertEl status="danger" message={error}/>}
+				{message && <AlertEl status="success" message={message}/>}
 
 				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Alert, Button } from 'react-bootstrap'
+import AlertEl from '../../../helpers/Alert'
 
 const Invite = ({ invite }) => {
     const [copySuccess, setCopySuccess] = useState('')
@@ -18,7 +19,7 @@ const Invite = ({ invite }) => {
         <>
             {!copySuccess
                 ?  
-                <Alert variant="info">
+                <Alert>
                     <div className="invite-link-wrapper">
                         {invite}
                         <Button className="btn button__primary button--small" onClick={() => handleCopyLink(invite)}>
@@ -26,11 +27,7 @@ const Invite = ({ invite }) => {
                         </Button>
                     </div>
                 </Alert>	
-                : <Alert variant="success">											
-                    <div className="invite-link-wrapper">
-                        {copySuccess}											
-                    </div>
-                </Alert>	
+                : <AlertEl status="danger" message={copySuccess}/>	
             }
         </>			
     );

@@ -3,6 +3,7 @@ import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
 import { DashCircleFill, PlusCircleFill } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRateImageContext } from '../../../contexts/RateImageContext'
+import AlertEl from '../../../helpers/Alert'
 import ThumbnailGrid from './ThumbnailGrid'
 
 const ImageGrid = ({ images, owner, title }) => {
@@ -16,7 +17,7 @@ const ImageGrid = ({ images, owner, title }) => {
 	return (
 		<SRLWrapper>
 			{images && likedImages.length > 0 || dislikedImages.length > 0
-				? <Alert variant="info" className="alert__count">{`You have approved ${likedImages.length}/${images.length} images`}</Alert>
+				? <AlertEl status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/>
 				: <p className="info-ingress">Please choose which images you want to keep and which to discard</p>
 			}
 

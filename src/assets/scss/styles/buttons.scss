@@ -38,8 +38,8 @@
 	&:focus,
 	&.btn-primary:not(:disabled):not(.disabled):active {
 		background-color: $button-secondary-hover;
-		border: $button-secondary-border;
-		box-shadow: $button-secondary-box-shadow;
+		border: none;
+		box-shadow: $button-secondary-box-shadow
 	}
 }
 
@@ -65,8 +65,18 @@
 .button__warning {
 	color: white;
 	background-color: $button-warning;
-	border: none;
+	border: $button-warning-border;
+
+	&:visited,
+	&:hover,
+	&:focus,
+	&.btn-primary:not(:disabled):not(.disabled):active {
+		background-color: $button-warning-hover;
+		border: none;
+		box-shadow: $button-warning-box-shadow
+	}
 }
+
 
 .button--small {
 	font-size: 0.8rem;

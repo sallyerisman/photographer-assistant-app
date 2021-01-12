@@ -21,6 +21,7 @@ $turquoise-darker: #3F575E;
 
 $yellow-light: #ffeeca;
 $yellow: #E1BA69;
+$yellow-dark: #d4a638;
 
 // Button colors
 $button-primary: $turquoise-darker;
@@ -38,9 +39,9 @@ $button-danger-hover: $red;
 $button-danger-border: $red;
 $button-danger-box-shadow: 0 0 0 .2rem rgb(216, 140, 137); // red-light
 
-$button-warning: $yellow;
-$button-warnin-hover: $yellow;
-$button-secondary-border: $yellow;
-$button-secondary-box-shadow: 0 0 0 .2rem rgb(255, 238, 202); // yellow-light
+$button-warning: $yellow-dark;
+$button-warning-hover: $yellow;
+$button-warning-border: $yellow;
+$button-warning-box-shadow: 0 0 0 .2rem rgb(255, 238, 202); // yellow-light
 
 

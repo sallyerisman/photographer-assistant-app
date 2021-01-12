@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Alert, Col, Row } from 'react-bootstrap'
 import ProgressBar from 'react-bootstrap/esm/ProgressBar'
 import { useDropzone } from 'react-dropzone'
 import useUploadImages from '../../../hooks/useUploadImages'
+import AlertEl from '../../../helpers/Alert'
 
 const UploadImages = () => {
 	const [errorMessage, setErrorMessage] = useState(false)
@@ -60,8 +60,8 @@ const UploadImages = () => {
 				}
 			</div>
 
-			{errorMessage && <Alert className="alert__upload" variant="danger">{errorMessage}</Alert>}
-			{successMessage && <Alert className="alert__upload" variant="success">{successMessage}</Alert>}
+			{errorMessage && <AlertEl status="danger" message={errorMessage}/>}
+			{successMessage && <AlertEl status="success" message={successMessage}/>}
 		</>
 	)
 }

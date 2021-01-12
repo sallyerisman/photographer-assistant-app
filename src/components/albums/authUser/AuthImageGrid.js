@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, Card, Col, Row } from 'react-bootstrap'
+import { Button, Card, Col, Row } from 'react-bootstrap'
 import { Plus } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useAuth } from '../../../contexts/AuthContext'
 import useDeleteImage from '../../../hooks/useDeleteImage'
 import useUploadImages from '../../../hooks/useUploadImages'
 import Checkbox from '../../../helpers/Checkbox'
+import AlertEl from '../../../helpers/Alert'
 
 const AuthImageGrid = ({ images }) => {
 	const [checkedItems, setCheckedItems] = useState({})
@@ -88,8 +89,8 @@ const AuthImageGrid = ({ images }) => {
 
 	return (
 		<SRLWrapper>
-			{errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-			{successMessage && <Alert variant="success">{successMessage}</Alert>}
+			{errorMessage && <AlertEl status="danger" message={errorMessage}/>}
+			{successMessage && <AlertEl status="success" message={successMessage}/>}
 
 			<Row className="image-grid">
 				{images &&

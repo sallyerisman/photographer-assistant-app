@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { db } from '../../../firebase'
 import { useAuth } from '../../../contexts/AuthContext'
+import AlertEl from '../../../helpers/Alert'
 
 const CreateAlbumByTitle = () => {
 	const [error, setError] = useState(false)
@@ -53,7 +54,7 @@ const CreateAlbumByTitle = () => {
 			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Create a new album</h1>
 
-				{error && <Alert variant="danger">{error}</Alert>}
+				{error && <AlertEl status="danger" message={error}/>}
 
 				<Form onSubmit={handleSubmit} className="form form__create-album">
 					<Form.Group id="title">

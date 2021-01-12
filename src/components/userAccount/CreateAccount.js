@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
+import AlertEl from '../../helpers/Alert'
 
 const CreateAccount = () => {
 	const [error, setError] = useState(null)
@@ -39,7 +40,7 @@ const CreateAccount = () => {
 			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Create a new account</h1>
 
-				{error && (<Alert variant="danger">{error}</Alert>)}
+				{error && <AlertEl status="danger" message={error}/>}
 
 				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">
