@@ -49,7 +49,7 @@ const useDeleteImage = image => {
 					let imageArray = doc.data().images
 					imageArray.map(imgItem => {
 						if (imgItem.path === image.path) { 
-							multipleExists.push(imgItem)	
+							return multipleExists.push(imgItem)	
 						}
 					})
 				}

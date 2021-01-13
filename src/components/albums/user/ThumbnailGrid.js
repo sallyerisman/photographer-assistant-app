@@ -33,7 +33,7 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 		<SRLWrapper>
 			{errorMessage && <CustomAlert status="danger" message={errorMessage}/>}
 
-			{images && likedImages.length > 0 || dislikedImages.length > 0 &&
+			{images && likedImages.length > 0 || images && dislikedImages.length > 0 &&
 				<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/>
 			}
 

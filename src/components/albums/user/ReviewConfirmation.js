@@ -5,7 +5,7 @@ const ReviewConfirmation = () => {
 	return (		
 		<Row>
 			<Col>
-				<div className="logo-icon--wrapper"><img src={logo} className="logo logo--home-page"/></div>
+				<div className="logo-icon--wrapper"><img src={logo} className="logo logo--home-page" alt="Logo"/></div>
 				<h1 className="heading__goodbye">Thank you!</h1>
 			</Col>
 		</Row>		

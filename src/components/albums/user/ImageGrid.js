@@ -20,7 +20,7 @@ const ImageGrid = ({ images, owner, title }) => {
 				<p className="info-ingress">Please choose which images you want to keep and which to discard</p>
 			}		
 
-			{images && likedImages.length > 0 || dislikedImages.length > 0 &&
+			{images && likedImages.length > 0 || images && dislikedImages.length > 0 &&
 				<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
 			}
 

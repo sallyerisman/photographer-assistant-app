@@ -62,7 +62,7 @@ const useDeleteAlbum = album => {
 		};
 
 	}, [album]);
-	return { deleteError, deleteSuccess }
+	return { deleteError, deleteSuccess, isCancelled }
 }
 
 export default useDeleteAlbum
