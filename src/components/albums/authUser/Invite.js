@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Alert, Button } from 'react-bootstrap'
-import AlertEl from '../../../helpers/Alert'
+import CustomAlert from '../../../helpers/CustomAlert'
 
 const Invite = ({ invite }) => {
     const [copySuccess, setCopySuccess] = useState('')
@@ -27,7 +27,7 @@ const Invite = ({ invite }) => {
                         </Button>
                     </div>
                 </Alert>	
-                : <AlertEl status="success" message={copySuccess}/>	
+                : <CustomAlert status="success" message={copySuccess}/>	
             }
         </>			
     );

@@ -3,23 +3,25 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import { DashCircleFill, PlusCircleFill } from 'react-bootstrap-icons'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useRateImageContext } from '../../../contexts/RateImageContext'
-import AlertEl from '../../../helpers/Alert'
+import CustomAlert from '../../../helpers/CustomAlert'
 import ThumbnailGrid from './ThumbnailGrid'
 
 const ImageGrid = ({ images, owner, title }) => {
 	const [showThumbnails, setShowThumbnails] = useState(false)
 	const { dislikedImages, handleDislike, handleLike, likedImages  } = useRateImageContext()
-
+	
 	const handleReviewSelection = () => {
 		setShowThumbnails(true)
 	}
 
 	return (
 		<SRLWrapper>
-			<p className="info-ingress">Please choose which images you want to keep and which to discard</p>
+			{!showThumbnails && 
+				<p className="info-ingress">Please choose which images you want to keep and which to discard</p>
+			}		
 
 			{images && likedImages.length > 0 || dislikedImages.length > 0 &&
-				<AlertEl status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
+				<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
 			}
 
 			{!showThumbnails

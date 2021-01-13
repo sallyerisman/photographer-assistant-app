@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { X } from 'react-bootstrap-icons'
 
-const AlertEl = ({status, message}) => {
+const CustomAlert = ({status, message}) => {
 	const [clicked, setClicked] = useState(false)
 
 	const handleClick = () => {
@@ -22,5 +22,5 @@ const AlertEl = ({status, message}) => {
     );
 };
 
-export default AlertEl
+export default CustomAlert
 

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import ProgressBar from 'react-bootstrap/esm/ProgressBar'
 import { useDropzone } from 'react-dropzone'
 import useUploadImages from '../../../hooks/useUploadImages'
-import AlertEl from '../../../helpers/Alert'
+import CustomAlert from '../../../helpers/CustomAlert'
 
 const UploadImages = () => {
 	const [errorMessage, setErrorMessage] = useState(false)
@@ -60,8 +60,8 @@ const UploadImages = () => {
 				}
 			</div>
 
-			{errorMessage && <AlertEl status="danger" message={errorMessage}/>}
-			{successMessage && <AlertEl status="success" message={successMessage}/>}
+			{errorMessage && <CustomAlert status="danger" message={errorMessage}/>}
+			{successMessage && <CustomAlert status="success" message={successMessage}/>}
 		</>
 	)
 }

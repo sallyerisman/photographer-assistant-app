@@ -7,7 +7,7 @@ import { useAuth } from '../../../contexts/AuthContext'
 import useDeleteImage from '../../../hooks/useDeleteImage'
 import useUploadImages from '../../../hooks/useUploadImages'
 import Checkbox from '../../../helpers/Checkbox'
-import AlertEl from '../../../helpers/Alert'
+import CustomAlert from '../../../helpers/CustomAlert'
 
 const AuthImageGrid = ({ images }) => {
 	const [checkedItems, setCheckedItems] = useState({})
@@ -89,8 +89,8 @@ const AuthImageGrid = ({ images }) => {
 
 	return (
 		<SRLWrapper>
-			{errorMessage && <AlertEl status="danger" message={errorMessage}/>}
-			{successMessage && <AlertEl status="success" message={successMessage}/>}
+			{errorMessage && <CustomAlert status="danger" message={errorMessage}/>}
+			{successMessage && <CustomAlert status="success" message={successMessage}/>}
 
 			<Row className="image-grid">
 				{images &&

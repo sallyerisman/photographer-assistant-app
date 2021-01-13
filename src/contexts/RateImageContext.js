@@ -16,7 +16,7 @@ const RateImageContextProvider = (props) => {
 		if (regretedLiked.includes(image)) {
 			for (let i = 0; i < regretedLiked.length; i++){     
 				regretedLiked[i] === image && regretedLiked.splice(i, 1) 	
-				setDislikedImages(regretedLiked)	
+				setLikedImages(regretedLiked)	
 			}
 		} 
 

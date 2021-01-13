@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { ArrowLeft } from 'react-bootstrap-icons'
 import { useAuth } from '../../contexts/AuthContext'
-import AlertEl from '../../helpers/Alert'
+import CustomAlert from '../../helpers/CustomAlert'
 
 const ForgotPassword = () => {
 	const [error, setError] = useState(null)
@@ -34,8 +34,8 @@ const ForgotPassword = () => {
 			<Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
 				<h1>Forgot your password?</h1>
 
-				{error && <AlertEl status="danger" message={error}/>}
-				{message && <AlertEl status="success" message={message}/>}
+				{error && <CustomAlert status="danger" message={error}/>}
+				{message && <CustomAlert status="success" message={message}/>}
 
 				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">
