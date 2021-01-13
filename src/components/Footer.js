@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
-import { Images } from 'react-bootstrap-icons'
+import logo from '../assets/images/logo.png'
 
 const Footer = () => {
 	return (
@@ -9,8 +9,8 @@ const Footer = () => {
                 <div className="footer-content-wrapper">
                     <p className="footer-text">Copyright © Sally Erisman</p>
                     <Link to="/" className="link logo-wrapper logo-wrapper--footer">
-                        <Images className="logo" />
-                        <span className="logo-text">PHOTO HELPER</span>                
+                        <img src={logo} className="logo logo--footer"/>
+                        <span className="logo-text">REVIEW MY PHOTOS</span>                
                     </Link>
                 </div>
             </Container>

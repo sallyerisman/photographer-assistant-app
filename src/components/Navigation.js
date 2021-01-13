@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { Container, Navbar } from 'react-bootstrap'
-import { Images, PersonFill } from 'react-bootstrap-icons'
+import { PersonFill } from 'react-bootstrap-icons'
+import logo from '../assets/images/logo.png'
 import { useAuth } from '../contexts/AuthContext'
 
 const Navigation = () => {
@@ -10,8 +11,8 @@ const Navigation = () => {
         <Navbar className="navigation">
             <Container className="navigation-container">
                 <Link to="/" className="link logo-wrapper">
-                    <Images className="logo" />
-                    <span className="logo-text">PHOTO HELPER</span>                
+                    <img src={logo} className="logo"/>
+                    <span className="logo-text">REVIEW MY PHOTOS</span>                
                 </Link>
 
                 {currentUser 

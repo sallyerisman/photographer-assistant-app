@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap'
 const Home = () => {
 	return (
 		<Row>
-			<Col className="page page__home-page">			
+			<Col className="page page__home-page">	
 				<h1 className="heading heading__home-page">Welcome to your Photo Helper!</h1>
 
 				<p className="ingress">Your one-stop-shop for all of your customer review process needs</p>

@@ -5,34 +5,63 @@
 .logo-wrapper {
 	display: flex;
 	align-items: center;
-	font-size: 1.1rem;
+	font-size: 0.9rem;
 	font-weight: 300;
 	white-space: nowrap;
 
 	.logo {
-		margin-right: 0.8rem;
-		transform: rotate(350deg);
+		width: 2rem;
+		height: auto;
+		margin-right: 0.5rem;
+
+		// Tablet
+		@media only screen and (min-width: 768px) {
+			width: 3rem;
+			height: auto;
+			margin-right: 0.8rem;
+		}
 	}
 
 	&:hover {
 		color: black;
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 	}
 
 	// Tablet
 	@media only screen and (min-width: 768px) {
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 	}
 }
 
 .logo-wrapper--footer {
-	font-size: 1rem;
+	font-size: 0.8rem;
 
-	.logo {
-		margin-right: 0.5rem;
+	.logo--footer {
+		width: 1.6rem;
+		height: auto;
+		margin-right: 0.3rem;
+
+		// Tablet
+		@media only screen and (min-width: 768px) {
+			width: 2rem;
+			height: auto;
+			margin-right: 0.5rem;
+		}
 	}
 
-	&:hover {
-		font-size: 1.2rem;
+	// Tablet
+	@media only screen and (min-width: 768px) {
+		font-size: 1rem;
+	}
+}
+
+.logo-icon--wrapper {
+	text-align: center;
+
+	.logo--home-page {
+		width: 4rem;
+		height: auto;
+		margin-top: 1rem;
+		margin-bottom: 1.5rem;
 	}
 }
