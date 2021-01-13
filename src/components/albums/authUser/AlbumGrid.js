@@ -7,6 +7,9 @@ import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
 
 const AlbumGrid = ({ albums }) => {
 	const [deleteAlbum, setDeleteAlbum] = useState(false)
+	const [errorMessage, setErrorMessage] = useState(false)
+	const [successMessage, setSuccessMessage] = useState(false)
+
 	const { deleteError, deleteSuccess } = useDeleteAlbum(deleteAlbum)
 
 	useEffect(() => {
@@ -34,20 +37,25 @@ const AlbumGrid = ({ albums }) => {
 	}
 
 	return (
-		<Row className="album-grid"> 
-			<Col>
-				{albums.map(album => (
-					<Card key={album.id} className="card__album">
-						<Card.Body>
-							<Link to={`/albums/${album.id}`} className="link">
-								<Card.Title>{album.title}</Card.Title>
-							</Link>
-							<DashCircleFill	className="icon icon__delete-album" onClick={() => {handleDeleteAlbum(album)}} />	
-						</Card.Body>
-					</Card>
-				))}
-			</Col>
-		</Row>
+		<>
+			{errorMessage && <CustomAlert status="danger" message={errorMessage}/>}
+			{successMessage && <CustomAlert status="success" message={successMessage}/>}
+
+			<Row className="album-grid"> 
+				<Col>
+					{albums.map(album => (
+						<Card key={album.id} className="card__album">
+							<Card.Body>
+								<Link to={`/albums/${album.id}`} className="link">
+									<Card.Title>{album.title}</Card.Title>
+								</Link>
+								<DashCircleFill	className="icon icon__delete-album" onClick={() => {handleDeleteAlbum(album)}} />	
+							</Card.Body>
+						</Card>
+					))}
+				</Col>
+			</Row>
+		</>
 	)
 }
 
