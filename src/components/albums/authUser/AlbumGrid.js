@@ -4,6 +4,7 @@ import { Card, Col, Row} from 'react-bootstrap'
 import { DashCircleFill } from 'react-bootstrap-icons'
 import swal from '@sweetalert/with-react'
 import useDeleteAlbum from '../../../hooks/useDeleteAlbum'
+import CustomAlert from '../../../helpers/CustomAlert'
 
 const AlbumGrid = ({ albums }) => {
 	const [deleteAlbum, setDeleteAlbum] = useState(false)
