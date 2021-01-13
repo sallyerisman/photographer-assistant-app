@@ -17,11 +17,15 @@ const ImageGrid = ({ images, owner, title }) => {
 	return (
 		<SRLWrapper>
 			{!showThumbnails && 
-				<p className="info-ingress">Please choose which images you want to keep and which to discard</p>
+				<>
+					<p className="info-ingress info-ingress--multiple">Please choose which images you want to keep and which to discard.</p> 
+					<p className="info-ingress">You must select <PlusCircleFill className="icon icon__like icon__like--ingress"/> or <DashCircleFill className="icon icon__dislike icon__dislike--ingress"/> for ALL images.</p>
+				</>
 			}		
 
-			{images && likedImages.length > 0 || images && dislikedImages.length > 0 &&
-				<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
+			{images && 
+				likedImages.length > 0 &&
+					<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/> 
 			}
 
 			{!showThumbnails
@@ -48,7 +52,7 @@ const ImageGrid = ({ images, owner, title }) => {
 						<Col>
 							{dislikedImages.length + likedImages.length === images.length &&		
 								<div className="button-wrapper">
-									<Button className="btn button__secondary" onClick={handleReviewSelection}>Review selection</Button>													
+									<Button className="btn button__secondary" onClick={handleReviewSelection}>Review my selection</Button>													
 								</div>
 							}
 						</Col>

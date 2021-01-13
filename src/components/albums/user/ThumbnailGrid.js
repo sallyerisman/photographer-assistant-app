@@ -32,15 +32,16 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 	return (
 		<SRLWrapper>
 			{errorMessage && <CustomAlert status="danger" message={errorMessage}/>}
+			<p className="info-ingress">Any regrets? Here you can undo any selection you made</p>
 
 			{images && likedImages.length > 0 || images && dislikedImages.length > 0 &&
 				<CustomAlert status="info" message={`You have approved ${likedImages.length}/${images.length} images`}/>
 			}
 
-			<>
+			<div className="thumbnail-section">
 				{likedImages.length > 0 &&
 					<>
-						<h2>Images to keep:</h2>
+						<h2>Images I want to keep:</h2>
 						<Row className="thumbnail-grid">
 							{likedImages.map((image, index) => (
 								<Col xs={4} md={3} lg={2} key={index}>
@@ -56,7 +57,7 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 					
 				{dislikedImages.length > 0 &&
 					<>
-						<h2>Images to remove:</h2>
+						<h2>Images I want to remove:</h2>
 						<Row className="thumbnail-grid">
 							{dislikedImages.map((image, index) => (
 								<Col xs={4} md={3} lg={2} key={index}>
@@ -71,9 +72,9 @@ const ThumbnailGrid = ({ images, owner, title }) => {
 				}	
 			
 				<div className="button-wrapper">
-					<Button className="btn button__primary" onClick={() => handleFinalizeSelection(likedImages)}>Finalize your selection</Button>
+					<Button className="btn button__primary" onClick={() => handleFinalizeSelection(likedImages)}>Finalize my selection</Button>
 				</div>
-			</>				
+			</div>				
 		</SRLWrapper>
 	)
 }

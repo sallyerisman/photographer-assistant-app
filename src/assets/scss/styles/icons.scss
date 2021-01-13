@@ -38,6 +38,11 @@
 	color: $red;
 	font-size: 1.3rem;
 	cursor: pointer;
+
+	&.icon__dislike--ingress {
+		font-size: 0.8rem;
+		margin: 0 0.3rem;
+	}
 }
 
 .icon__exit {
@@ -51,6 +56,11 @@
 	font-size: 1.3rem;
 	margin-left: 1rem;
 	cursor: pointer;
+
+	&.icon__like--ingress {
+		font-size: 0.8rem;
+		margin: 0 0.3rem;
+	}
 }
 
 .icon__login {

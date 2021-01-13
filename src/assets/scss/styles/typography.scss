@@ -9,12 +9,14 @@ $font-family-body: 'Lato', sans-serif;
 $font-family-headings: 'Roboto', sans-serif;
 
 
-
 body {
 	font-family: $font-family-body
 }
 
-h1 {
+// Headings
+
+h1,
+.h1 {
 	font-family: $font-family-headings;
 	font-size: 1.6rem;
 	text-transform: uppercase;
@@ -29,26 +31,20 @@ h2 {
 	line-height: 1.8rem;
 }
 
-p {
-	font-weight: 300;
-	letter-spacing: 0.04em;
+.heading__goodbye {
+	text-align: center;
 }
+
+.heading__welcome {
+	font-size: 2.2rem;
+	text-align: center;
+}
+
+
+// Paragraphs/other
 
 .card-title {
 	margin: 0
-}
-
-.info-ingress {
-	font-style: italic;
-}
-
-.ingress {
-	font-size: 1.2rem;
-	margin-bottom: 2rem;
-}
-
-.heading__goodbye {
-	text-align: center;
 }
 
 .footer-text {
@@ -60,5 +56,27 @@ p {
 		font-size: 1rem;
 	}
 }
+
+.info-ingress {
+	font-style: italic;
+
+	&.info-ingress--multiple {
+		margin-bottom: 0.3rem;
+	}
+}
+
+.ingress {
+	font-size: 1.2rem;
+	margin-bottom: 2rem;
+}
+
+p {
+	font-weight: 300;
+	letter-spacing: 0.04em;
+}
+
+
+
+
 
 
