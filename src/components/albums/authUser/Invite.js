@@ -4,6 +4,7 @@ import CustomAlert from '../../../helpers/CustomAlert'
 
 const Invite = ({ invite }) => {
     const [copySuccess, setCopySuccess] = useState('')
+    const [copyError, setCopyError] = useState('')
 
     const handleCopyLink = async (link) => {
 		// Try to copy the link text to clipboard
@@ -11,14 +12,13 @@ const Invite = ({ invite }) => {
 		  await navigator.clipboard.writeText(link)
 		  setCopySuccess("Successfully copied!")
 		} catch (err) {
-		  setCopySuccess("Failed to copy.")
+		  setCopyError("Failed to copy.")
 		}
 	}
 
     return ( 
         <>
-            {!copySuccess
-                ?  
+            {!copySuccess && !copyError &&  
                 <Alert variant="info">
                     <div className="invite-link-wrapper">
                         {invite}
@@ -27,8 +27,10 @@ const Invite = ({ invite }) => {
                         </Button>
                     </div>
                 </Alert>	
-                : <CustomAlert status="success" message={copySuccess}/>	
             }
+
+            {copySuccess && <CustomAlert status="success" message={copySuccess}/>}
+            {copyError && <CustomAlert status="danger" message={copyError}/>}
         </>			
     );
 }

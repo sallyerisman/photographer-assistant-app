@@ -5,7 +5,7 @@ const Home = () => {
 	return (
 		<Row>
 			<Col className="page page__home-page">	
-				<h1 className="heading heading__home-page">Welcome to your Photo Helper!</h1>
+				<h1 className="heading heading__home-page">Welcome to Review My Photos!</h1>
 
 				<p className="ingress">Your one-stop-shop for all of your customer review process needs</p>
 				<p>Here you can create albums, upload photos and have your customer review them.</p>
