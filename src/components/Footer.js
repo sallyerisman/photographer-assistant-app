@@ -10,7 +10,7 @@ const Footer = () => {
                     <p className="footer-text">Copyright © Sally Erisman</p>
                     <Link to="/" className="link logo-wrapper logo-wrapper--footer">
                         <img src={logo} className="logo logo--footer" alt="Logo"/>
-                        <span className="logo-text">REVIEW MY PHOTOS</span>                
+                        <span className="logo-text">Review my photos</span>                
                     </Link>
                 </div>
             </Container>

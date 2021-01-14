@@ -43,7 +43,7 @@ const Logout = () => {
 				</div>
 
 				<div>
-					<Link to="/albums" className="link text-link">
+					<Link role="link" to="/albums" className="link text-link">
 						<ArrowLeft className="icon icon__arrow-left" />
 						No, take me back to albums
 					</Link>				

@@ -37,7 +37,7 @@ const ForgotPassword = () => {
 				{error && <CustomAlert status="danger" message={error}/>}
 				{message && <CustomAlert status="success" message={message}/>}
 
-				<Form onSubmit={handleSubmit}>
+				<Form aria-label="form" onSubmit={handleSubmit}>
 					<Form.Group id="email">
 						<Form.Label>Enter your email address</Form.Label>
 						<Form.Control type="email" ref={emailRef} autoFocus required />
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
 						className="btn button__warning"
 						disabled={loading} 
 						type="submit"
-						>Reset your password
+						>Reset password
 					</Button>
 				</Form>
 

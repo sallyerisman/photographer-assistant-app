@@ -36,7 +36,7 @@ const Login = () => {
 
 				{error && <CustomAlert status="danger" message={error}/>}
 
-				<Form onSubmit={handleSubmit}>
+				<Form aria-label="form" onSubmit={handleSubmit}>
 					<Form.Group id="email">
 						<Form.Label>Email</Form.Label>
 						<Form.Control type="email" ref={emailRef} autoFocus required />

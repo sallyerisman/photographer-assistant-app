@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import { Container } from 'react-bootstrap'
 import './assets/scss/app.scss'
@@ -24,7 +24,7 @@ import ReviewConfirmation from './components/albums/user/ReviewConfirmation'
 
 const App = () => {
 	return (
-		<Router>
+		<>
 			<AuthContextProvider>
 				<Navigation />
 				<SimpleReactLightbox>
@@ -85,7 +85,7 @@ const App = () => {
 				</SimpleReactLightbox>
 			</AuthContextProvider>
 			<Footer />
-		</Router>
+		</>
 	)
 }
 

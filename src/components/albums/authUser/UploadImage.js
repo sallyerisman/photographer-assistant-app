@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ProgressBar from 'react-bootstrap/esm/ProgressBar'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import { useDropzone } from 'react-dropzone'
 import useUploadImages from '../../../hooks/useUploadImages'
 import CustomAlert from '../../../helpers/CustomAlert'

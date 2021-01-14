@@ -11,8 +11,8 @@ const Navigation = () => {
         <Navbar className="navigation">
             <Container className="navigation-container">
                 <Link to="/" className="link logo-wrapper">
-                    <img src={logo} className="logo" alt="Logo"/>
-                    <span className="logo-text">REVIEW MY PHOTOS</span>                
+                    <img src={logo} className="logo" role="img" alt="logo"/>
+                    <span className="logo-text">Review my photos</span>                
                 </Link>
 
                 {currentUser 
